@@ -13,3 +13,4 @@
 .externalNativeBuild
 .env
 /deploymentTargetSelector.xml
+/.idea/

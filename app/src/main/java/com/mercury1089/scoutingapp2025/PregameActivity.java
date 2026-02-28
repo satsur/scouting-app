@@ -2,6 +2,7 @@ package com.mercury1089.scoutingapp2025;
 
 import com.mercury1089.scoutingapp2025.database.model.Match;
 import com.mercury1089.scoutingapp2025.database.util.DBUtil;
+import com.mercury1089.scoutingapp2025.databinding.ActivityPregameBinding;
 import com.mercury1089.scoutingapp2025.qr.QRRunnable;
 import com.mercury1089.scoutingapp2025.repository.MatchRepository;
 
@@ -12,12 +13,10 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -38,11 +37,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class PregameActivity extends AppCompatActivity {
+    private ActivityPregameBinding binding;
+
     // Strategy was here
     //Set the default password in HashMapManager.setDefaultValues();
     String password;
@@ -99,28 +99,30 @@ public class PregameActivity extends AppCompatActivity {
      */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        binding = ActivityPregameBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_pregame);
         matchRepository = new MatchRepository(getApplicationContext());
 
         // Initialize views here
-        scouterNameInput = findViewById(R.id.ScouterNameInput);
-        matchNumberInput = findViewById(R.id.MatchNumberInput);
-        teamNumberInput = findViewById(R.id.TeamNumberInput);
-        firstAlliancePartnerInput = findViewById(R.id.FirstAlliancePartnerInput);
-        secondAlliancePartnerInput = findViewById(R.id.SecondAlliancePartnerInput);
-        blueButton = findViewById(R.id.BlueButton);
-        redButton = findViewById(R.id.RedButton);
-        oneButton = findViewById(R.id.FirstRobotButton);
-        twoButton = findViewById(R.id.SecondRobotButton);
-        threeButton = findViewById(R.id.ThirdRobotButton);
-        noShowSwitch = findViewById(R.id.NoShowSwitch);
-        preloadSwitch = findViewById(R.id.PreloadedCargoSwitch);
-        clearButton = findViewById(R.id.ClearButton);
-        autofillButton = findViewById(R.id.AutofillButton);
-        startButton = findViewById(R.id.StartButton);
-        settingsButton = findViewById(R.id.SettingsButton);
-        startDirectionsToast = findViewById(R.id.IDStartDirections);
-        robotAssignmentID = findViewById(R.id.IDRobotAssignment);
+        scouterNameInput = findViewById(R.id.et_scouter_name);
+        matchNumberInput = findViewById(R.id.et_match_number);
+        teamNumberInput = findViewById(R.id.et_team_number);
+        firstAlliancePartnerInput = findViewById(R.id.et_first_alliance_partner);
+        secondAlliancePartnerInput = findViewById(R.id.et_second_alliance_partner);
+        blueButton = findViewById(R.id.btn_blue);
+        redButton = findViewById(R.id.btn_red);
+        oneButton = findViewById(R.id.btn_first_robot);
+        twoButton = findViewById(R.id.btn_second_robot);
+        threeButton = findViewById(R.id.btn_third_robot);
+        noShowSwitch = findViewById(R.id.switch_no_show);
+        preloadSwitch = findViewById(R.id.switch_preload);
+        clearButton = findViewById(R.id.btn_clear);
+        autofillButton = findViewById(R.id.btn_autofill);
+        startButton = findViewById(R.id.btn_start);
+        settingsButton = findViewById(R.id.btn_settings);
+        startDirectionsToast = findViewById(R.id.tv_start_directions);
+        robotAssignmentID = findViewById(R.id.tv_robot_assignment);
 
         rooster = MediaPlayer.create(PregameActivity.this, R.raw.sound);
 
