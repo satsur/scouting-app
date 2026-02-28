@@ -49,30 +49,6 @@ public class PregameActivity extends AppCompatActivity {
     private CompositeDisposable disposables = new CompositeDisposable();
     private MatchRepository matchRepository;
 
-    //variables that store elements of the screen for the output variables
-    //Buttons
-    private ImageButton settingsButton;
-    private Button blueButton;
-    private Button redButton;
-
-    private Button oneButton, twoButton, threeButton;
-    private Button clearButton;
-    private Button autofillButton;
-    private Button startButton;
-
-    //Text Fields
-    private EditText scouterNameInput;
-    private EditText matchNumberInput;
-    private EditText teamNumberInput;
-    private EditText firstAlliancePartnerInput;
-    private EditText secondAlliancePartnerInput;
-    private TextView startDirectionsToast;
-    private TextView robotAssignmentID;
-
-    //Switches
-    private Switch noShowSwitch;
-    private Switch preloadSwitch;
-
     //HashMaps
     private LinkedHashMap<String, String> settingsHashMap;
     private LinkedHashMap<String, String> setupHashMap;
@@ -104,26 +80,6 @@ public class PregameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pregame);
         matchRepository = new MatchRepository(getApplicationContext());
 
-        // Initialize views here
-        scouterNameInput = findViewById(R.id.et_scouter_name);
-        matchNumberInput = findViewById(R.id.et_match_number);
-        teamNumberInput = findViewById(R.id.et_team_number);
-        firstAlliancePartnerInput = findViewById(R.id.et_first_alliance_partner);
-        secondAlliancePartnerInput = findViewById(R.id.et_second_alliance_partner);
-        blueButton = findViewById(R.id.btn_blue);
-        redButton = findViewById(R.id.btn_red);
-        oneButton = findViewById(R.id.btn_first_robot);
-        twoButton = findViewById(R.id.btn_second_robot);
-        threeButton = findViewById(R.id.btn_third_robot);
-        noShowSwitch = findViewById(R.id.switch_no_show);
-        preloadSwitch = findViewById(R.id.switch_preload);
-        clearButton = findViewById(R.id.btn_clear);
-        autofillButton = findViewById(R.id.btn_autofill);
-        startButton = findViewById(R.id.btn_start);
-        settingsButton = findViewById(R.id.btn_settings);
-        startDirectionsToast = findViewById(R.id.tv_start_directions);
-        robotAssignmentID = findViewById(R.id.tv_robot_assignment);
-
         rooster = MediaPlayer.create(PregameActivity.this, R.raw.sound);
 
         // Make sure hash maps are not empty/null, then get HashMaps and set password for settings screen
@@ -136,14 +92,14 @@ public class PregameActivity extends AppCompatActivity {
         //setting group buttons to default state
         updateXMLObjects(true);
 
-        scouterNameInput.addTextChangedListener(new TextWatcher() {
+        binding.etScouterName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setupHashMap.put("ScouterName", scouterNameInput.getText().toString());
+                setupHashMap.put("ScouterName", binding.etScouterName.getText().toString());
                 updateXMLObjects(false);
             }
 
@@ -152,14 +108,14 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        matchNumberInput.addTextChangedListener(new TextWatcher() {
+        binding.etMatchNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setupHashMap.put("MatchNumber", matchNumberInput.getText().toString());
+                setupHashMap.put("MatchNumber", binding.etMatchNumber.getText().toString());
                 updateXMLObjects(false);
             }
 
@@ -168,14 +124,14 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        teamNumberInput.addTextChangedListener(new TextWatcher() {
+        binding.etTeamNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setupHashMap.put("TeamNumber", teamNumberInput.getText().toString());
+                setupHashMap.put("TeamNumber", binding.etTeamNumber.getText().toString());
                 updateXMLObjects(false);
             }
 
@@ -184,14 +140,14 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        firstAlliancePartnerInput.addTextChangedListener(new TextWatcher() {
+        binding.etFirstAlliancePartner.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setupHashMap.put("AlliancePartner1", firstAlliancePartnerInput.getText().toString());
+                setupHashMap.put("AlliancePartner1", binding.etFirstAlliancePartner.getText().toString());
                 updateXMLObjects(false);
             }
 
@@ -200,14 +156,14 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        secondAlliancePartnerInput.addTextChangedListener(new TextWatcher() {
+        binding.etSecondAlliancePartner.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setupHashMap.put("AlliancePartner2", secondAlliancePartnerInput.getText().toString());
+                setupHashMap.put("AlliancePartner2", binding.etSecondAlliancePartner.getText().toString());
                 updateXMLObjects(false);
             }
 
@@ -217,7 +173,7 @@ public class PregameActivity extends AppCompatActivity {
         });
 
         //starting listener to check the status of the switch
-        noShowSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        binding.switchNoShow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked)
                     setupHashMap.put("PreloadNote", "N");
@@ -227,7 +183,7 @@ public class PregameActivity extends AppCompatActivity {
         });
 
         //starting listener to check status of switch
-        preloadSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        binding.switchPreload.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 setupHashMap.put("PreloadNote", isChecked ? "Y" : "N");
@@ -236,7 +192,7 @@ public class PregameActivity extends AppCompatActivity {
         });
 
         //click methods
-        settingsButton.setOnClickListener(new View.OnClickListener() {
+        binding.btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String[] passwordData = HashMapManager.pullSettingsPassword(PregameActivity.this);
@@ -368,7 +324,7 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        blueButton.setOnClickListener(new View.OnClickListener() {
+        binding.btnBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setupHashMap.put("AllianceColor", setupHashMap.get("AllianceColor").equals("Blue") ? "" : "Blue");
@@ -376,7 +332,7 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        redButton.setOnClickListener(new View.OnClickListener() {
+        binding.btnRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setupHashMap.put("AllianceColor", setupHashMap.get("AllianceColor").equals("Red") ? "" : "Red");
@@ -384,22 +340,22 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        oneButton.setOnClickListener(view -> {
+        binding.btnFirstRobot.setOnClickListener(view -> {
             setupHashMap.put("RobotAssignment", "1");
             updateXMLObjects(false);
         });
 
-        twoButton.setOnClickListener(view -> {
+        binding.btnSecondRobot.setOnClickListener(view -> {
             setupHashMap.put("RobotAssignment", "2");
             updateXMLObjects(false);
         });
 
-        threeButton.setOnClickListener(view -> {
+        binding.btnThirdRobot.setOnClickListener(view -> {
             setupHashMap.put("RobotAssignment", "3");
             updateXMLObjects(false);
         });
 
-        startButton.setOnClickListener(new View.OnClickListener() {
+        binding.btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Ensure that any async operations (like fetching from database) are cancelled
@@ -440,21 +396,33 @@ public class PregameActivity extends AppCompatActivity {
                     });
                 } else {
                     HashMapManager.putSetupHashMap(setupHashMap);
-                    if (scouterNameInput.getText().toString().equals("Mercury") && matchNumberInput.getText().toString().equals("1") && teamNumberInput.getText().toString().equals("0") && firstAlliancePartnerInput.getText().toString().equals("8") && secondAlliancePartnerInput.getText().toString().equals("9")) {
+                    if (binding.etScouterName.getText().toString().equals("Mercury") &&
+                            binding.etMatchNumber.getText().toString().equals("1") &&
+                            binding.etTeamNumber.getText().toString().equals("0") &&
+                            binding.etFirstAlliancePartner.getText().toString().equals("8") &&
+                            binding.etSecondAlliancePartner.getText().toString().equals("9")) {
                         settingsHashMap.put("NothingToSeeHere", "1");
                         HashMapManager.setDefaultValues(HashMapManager.HASH.SETUP);
                         setupHashMap = HashMapManager.getSetupHashMap();
 
                         updateXMLObjects(true);
                         return;
-                    } else if (scouterNameInput.getText().toString().equals("0x") && matchNumberInput.getText().toString().equals("441") && teamNumberInput.getText().toString().equals("1089") && firstAlliancePartnerInput.getText().toString().equals("1089") && secondAlliancePartnerInput.getText().toString().equals("1089")) {
+                    } else if (binding.etScouterName.getText().toString().equals("0x") &&
+                            binding.etMatchNumber.getText().toString().equals("441") &&
+                            binding.etTeamNumber.getText().toString().equals("1089") &&
+                            binding.etFirstAlliancePartner.getText().toString().equals("1089") &&
+                            binding.etSecondAlliancePartner.getText().toString().equals("1089")) {
                         settingsHashMap.put("Slack", "1");
                         HashMapManager.setDefaultValues(HashMapManager.HASH.SETUP);
                         setupHashMap = HashMapManager.getSetupHashMap();
 
                         updateXMLObjects(true);
                         return;
-                    } else if (scouterNameInput.getText().toString().equals("admin") && matchNumberInput.getText().toString().equals("1") && teamNumberInput.getText().toString().equals("0") && firstAlliancePartnerInput.getText().toString().equals("8") && secondAlliancePartnerInput.getText().toString().equals("9")) {
+                    } else if (binding.etScouterName.getText().toString().equals("admin") &&
+                            binding.etMatchNumber.getText().toString().equals("1") &&
+                            binding.etTeamNumber.getText().toString().equals("0") &&
+                            binding.etFirstAlliancePartner.getText().toString().equals("8") &&
+                            binding.etSecondAlliancePartner.getText().toString().equals("9")) {
                         HashMapManager.saveSettingsPassword(new String[]{"", "N"}, PregameActivity.this);
                         HashMapManager.setDefaultValues(HashMapManager.HASH.SETUP);
                         setupHashMap = HashMapManager.getSetupHashMap();
@@ -463,12 +431,13 @@ public class PregameActivity extends AppCompatActivity {
                         return;
                     } else if (settingsHashMap.get("NothingToSeeHere").equals("1")) {
                         rooster.start();
-                    } else if (teamNumberInput.getText().toString().equals(firstAlliancePartnerInput.getText().toString()) || teamNumberInput.getText().toString().equals(secondAlliancePartnerInput.getText().toString())) {
+                    } else if (binding.etTeamNumber.getText().toString().equals(binding.etFirstAlliancePartner.getText().toString()) ||
+                            binding.etTeamNumber.getText().toString().equals(binding.etSecondAlliancePartner.getText().toString())) {
                         Toast.makeText(PregameActivity.this, "A team cannot be its own partner.", Toast.LENGTH_SHORT).show();
                         setupHashMap.put("TeamNumber", "");
                         setupHashMap.put("AlliancePartner1", "");
                         setupHashMap.put("AlliancePartner2", "");
-                        teamNumberInput.requestFocus();
+                        binding.etTeamNumber.requestFocus();
                         updateXMLObjects(true);
                         return;
 
@@ -480,7 +449,7 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        clearButton.setOnClickListener(new View.OnClickListener() {
+        binding.btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dialog dialog = new Dialog(PregameActivity.this);
@@ -511,12 +480,12 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
-        autofillButton.setOnClickListener(view -> {
+        binding.btnAutofill.setOnClickListener(view -> {
             if (!canAutoFill()) {
                 Toast.makeText(getApplicationContext(), "Match Number, Alliance Color, and Robot Assignment are required to autofill.", Toast.LENGTH_SHORT).show();
                 return;
             }
-            int matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
+            int matchNumber = Integer.parseInt(binding.etMatchNumber.getText().toString());
             disposables.add(matchRepository.getStoredEventKey().subscribe(
                     eventKey -> {
                         String assignment = (setupHashMap.get("AllianceColor").charAt(0) + setupHashMap.get("RobotAssignment")).toUpperCase();
@@ -535,18 +504,18 @@ public class PregameActivity extends AppCompatActivity {
         boolean allianceColor = assignment.toLowerCase().charAt(0) == 'r'; // 1 = red, 0 = blue
         List<Integer> teams = allianceColor ? match.getRedAllianceTeams() : match.getBlueAllianceTeams();
         // Clear boxes that are going to be autofilled
-        teamNumberInput.getText().clear();
-        firstAlliancePartnerInput.getText().clear();
-        secondAlliancePartnerInput.getText().clear();
+        binding.etTeamNumber.getText().clear();
+        binding.etFirstAlliancePartner.getText().clear();
+        binding.etSecondAlliancePartner.getText().clear();
         int assignmentNumber = Integer.parseInt(String.valueOf(assignment.charAt(assignment.length()-1))) - 1; // because teams is zero-indexed
         for (int i = 0; i < teams.size(); i++) {
             int team = teams.get(i);
-            if (i == assignmentNumber) teamNumberInput.setText(String.valueOf(team));
-            else if (firstAlliancePartnerInput.getText().toString().isEmpty()) {
-                firstAlliancePartnerInput.setText(String.valueOf(team));
+            if (i == assignmentNumber) binding.etTeamNumber.setText(String.valueOf(team));
+            else if (binding.etFirstAlliancePartner.getText().toString().isEmpty()) {
+                binding.etFirstAlliancePartner.setText(String.valueOf(team));
             }
             else {
-                secondAlliancePartnerInput.setText(String.valueOf(team));
+                binding.etSecondAlliancePartner.setText(String.valueOf(team));
             }
         }
         Toast.makeText(getApplicationContext(), "Successfully autofilled match info!", Toast.LENGTH_SHORT).show();
@@ -586,18 +555,18 @@ public class PregameActivity extends AppCompatActivity {
     - move into the MatchActivity
      */
     private boolean readyToStart() {
-        return scouterNameInput.getText().length() > 0 &&
-                matchNumberInput.getText().length() > 0 &&
-                teamNumberInput.getText().length() > 0 &&
-                firstAlliancePartnerInput.getText().length() > 0 &&
-                secondAlliancePartnerInput.getText().length() > 0 &&
+        return binding.etScouterName.getText().length() > 0 &&
+                binding.etMatchNumber.getText().length() > 0 &&
+                binding.etTeamNumber.getText().length() > 0 &&
+                binding.etFirstAlliancePartner.getText().length() > 0 &&
+                binding.etSecondAlliancePartner.getText().length() > 0 &&
                 !setupHashMap.get("AllianceColor").isEmpty() &&
                 !setupHashMap.get("RobotAssignment").isEmpty() &&
                 (Objects.equals(setupHashMap.get("NoShow"), "Y") || Objects.equals(setupHashMap.get("NoShow"), "N"));
     }
 
     private boolean canAutoFill() {
-        return !matchNumberInput.getText().toString().isEmpty() &&
+        return !binding.etMatchNumber.getText().toString().isEmpty() &&
                 !setupHashMap.get("AllianceColor").isEmpty() &&
                 !setupHashMap.get("RobotAssignment").isEmpty();
     }
@@ -607,30 +576,31 @@ public class PregameActivity extends AppCompatActivity {
     - (if nothing is filled out, clear button should be disabled)
      */
     private boolean canClearInputs() {
-        return scouterNameInput.getText().length() > 0 ||
-                matchNumberInput.getText().length() > 0 ||
-                teamNumberInput.getText().length() > 0 ||
-                noShowSwitch.isChecked() ||
-                firstAlliancePartnerInput.getText().length() > 0 ||
-                secondAlliancePartnerInput.getText().length() > 0 ||
-                blueButton.isSelected() || redButton.isSelected() ||
-                oneButton.isSelected() || twoButton.isSelected() || threeButton.isSelected();
+        return binding.etScouterName.getText().length() > 0 ||
+                binding.etMatchNumber.getText().length() > 0 ||
+                binding.etTeamNumber.getText().length() > 0 ||
+                binding.switchNoShow.isChecked() ||
+                binding.etFirstAlliancePartner.getText().length() > 0 ||
+                binding.etSecondAlliancePartner.getText().length() > 0 ||
+                binding.btnBlue.isSelected() || binding.btnRed.isSelected() ||
+                binding.btnFirstRobot.isSelected() || binding.btnSecondRobot.isSelected() ||
+                binding.btnThirdRobot.isSelected();
     }
 
     private void setRobotAssignmentButtonsEnabled(boolean enabled) {
         if (!enabled) setupHashMap.put("RobotAssignment", "");
-        robotAssignmentID.setEnabled(enabled);
-        oneButton.setEnabled(enabled);
-        twoButton.setEnabled(enabled);
-        threeButton.setEnabled(enabled);
+        binding.tvRobotAssignment.setEnabled(enabled);
+        binding.btnFirstRobot.setEnabled(enabled);
+        binding.btnSecondRobot.setEnabled(enabled);
+        binding.btnThirdRobot.setEnabled(enabled);
     }
 
     private void setRobotAssignmentButtonsBackground(String allianceColor) {
-        int bgDrawableID = allianceColor == "Red" ? R.drawable.toggle_red_states : allianceColor == "Blue" ? R.drawable.toggle_blue_states : 0;
+        int bgDrawableID = allianceColor.equals("Red") ? R.drawable.toggle_red_states : allianceColor.equals("Blue") ? R.drawable.toggle_blue_states : 0;
         if (bgDrawableID == 0) return;
-        oneButton.setBackground(getDrawable(bgDrawableID));
-        twoButton.setBackground(getDrawable(bgDrawableID));
-        threeButton.setBackground(getDrawable(bgDrawableID));
+        binding.btnFirstRobot.setBackground(getDrawable(bgDrawableID));
+        binding.btnSecondRobot.setBackground(getDrawable(bgDrawableID));
+        binding.btnThirdRobot.setBackground(getDrawable(bgDrawableID));
     }
 
     /*
@@ -642,53 +612,53 @@ public class PregameActivity extends AppCompatActivity {
         boolean readyToStart = readyToStart();
         boolean canClear = canClearInputs();
 
-        autofillButton.setEnabled(!matchNumberInput.getText().toString().isEmpty());
+        binding.btnAutofill.setEnabled(!binding.etMatchNumber.getText().toString().isEmpty());
 
         /*
         - updateText should only be true if you want to reset the basic info fields to the stored hashmap values
             - e.g. if you're returning from SettingsActivity or if you used the "Clear" button
          */
         if (updateText) {
-            scouterNameInput.setText(setupHashMap.get("ScouterName"));
-            matchNumberInput.setText(setupHashMap.get("MatchNumber"));
-            teamNumberInput.setText(setupHashMap.get("TeamNumber"));
-            firstAlliancePartnerInput.setText(setupHashMap.get("AlliancePartner1"));
-            secondAlliancePartnerInput.setText(setupHashMap.get("AlliancePartner2"));
+            binding.etScouterName.setText(setupHashMap.get("ScouterName"));
+            binding.etMatchNumber.setText(setupHashMap.get("MatchNumber"));
+            binding.etTeamNumber.setText(setupHashMap.get("TeamNumber"));
+            binding.etFirstAlliancePartner.setText(setupHashMap.get("AlliancePartner1"));
+            binding.etSecondAlliancePartner.setText(setupHashMap.get("AlliancePartner2"));
         }
         setRobotAssignmentButtonsEnabled(!setupHashMap.get("AllianceColor").isEmpty());
         // Dynamically set background of robot assignment buttons
         setRobotAssignmentButtonsBackground(setupHashMap.get("AllianceColor"));
 
-        blueButton.setSelected(setupHashMap.get("AllianceColor").equals("Blue"));
-        redButton.setSelected(setupHashMap.get("AllianceColor").equals("Red"));
-        oneButton.setSelected(setupHashMap.get("RobotAssignment").equals("1"));
-        twoButton.setSelected(setupHashMap.get("RobotAssignment").equals("2"));
-        threeButton.setSelected(setupHashMap.get("RobotAssignment").equals("3"));
+        binding.btnBlue.setSelected(setupHashMap.get("AllianceColor").equals("Blue"));
+        binding.btnRed.setSelected(setupHashMap.get("AllianceColor").equals("Red"));
+        binding.btnFirstRobot.setSelected(setupHashMap.get("RobotAssignment").equals("1"));
+        binding.btnSecondRobot.setSelected(setupHashMap.get("RobotAssignment").equals("2"));
+        binding.btnThirdRobot.setSelected(setupHashMap.get("RobotAssignment").equals("3"));
 
         if (settingsHashMap.get("Slack").equals("1"))
             slackCenter.setVisibility(View.VISIBLE);
 
-        preloadSwitch.setChecked(setupHashMap.get("PreloadNote").equals("Y"));
+        binding.switchPreload.setChecked(setupHashMap.get("PreloadNote").equals("Y"));
 
         if (setupHashMap.get("NoShow").equals("Y")) {
-            preloadSwitch.setEnabled(false);
-            noShowSwitch.setChecked(true);
+            binding.switchPreload.setEnabled(false);
+            binding.switchNoShow.setChecked(true);
 
-            startButton.setPadding(185, 0, 185, 0);
-            startButton.setText(R.string.GenerateQRCode);
-            startButton.setCompoundDrawablesRelativeWithIntrinsicBounds(this.getDrawable(R.drawable.qr), null, null, null);
+            binding.btnStart.setPadding(185, 0, 185, 0);
+            binding.btnStart.setText(R.string.GenerateQRCode);
+            binding.btnStart.setCompoundDrawablesRelativeWithIntrinsicBounds(this.getDrawable(R.drawable.qr), null, null, null);
             isQRButton = true;
         } else {
-            preloadSwitch.setEnabled(true);
-            noShowSwitch.setChecked(false);
-            startButton.setCompoundDrawablesRelativeWithIntrinsicBounds(this.getDrawable(R.drawable.start_button_symbol_states), null, null, null);
-            startButton.setPadding(234, 0, 234, 0);
-            startButton.setText(R.string.Start);
+            binding.switchPreload.setEnabled(true);
+            binding.switchNoShow.setChecked(false);
+            binding.btnStart.setCompoundDrawablesRelativeWithIntrinsicBounds(this.getDrawable(R.drawable.start_button_symbol_states), null, null, null);
+            binding.btnStart.setPadding(234, 0, 234, 0);
+            binding.btnStart.setText(R.string.Start);
             isQRButton = false;
         }
 
-        startButton.setEnabled(readyToStart);
-        startDirectionsToast.setEnabled(readyToStart && !isQRButton);
-        clearButton.setEnabled(canClear);
+        binding.btnStart.setEnabled(readyToStart);
+        binding.tvStartDirections.setEnabled(readyToStart && !isQRButton);
+        binding.btnClear.setEnabled(canClear);
     }
 }
