@@ -13,8 +13,57 @@
     tools:context=".PregameActivity">
 
 
+    <RadioGroup
+        android:id="@+id/RobotAssignmentSelector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:divider="?android:attr/dividerHorizontal"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        app:layout_constraintStart_toStartOf="@+id/tv_robot_assignment"
+        app:layout_constraintTop_toBottomOf="@+id/tv_robot_assignment">
+
+        <Button
+            android:id="@+id/btn_first_robot"
+            android:layout_width="@dimen/robot_assignment_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/toggle_left_states"
+            android:fontFamily="@font/open_sans"
+            android:gravity="center"
+            android:text="@string/One"
+            android:textColor="@drawable/text_states"
+            android:textSize="@dimen/button_text_size"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_second_robot"
+            android:layout_width="@dimen/robot_assignment_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/toggle_center_states"
+            android:fontFamily="@font/open_sans"
+            android:gravity="center"
+            android:text="@string/Two"
+            android:textColor="@drawable/text_states"
+            android:textSize="@dimen/button_text_size"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_third_robot"
+            android:layout_width="@dimen/robot_assignment_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_red_states"
+            android:fontFamily="@font/open_sans"
+            android:gravity="center"
+            android:text="@string/Three"
+            android:textColor="@drawable/text_states"
+            android:textSize="@dimen/button_text_size"
+            tools:visibility="visible" />
+    </RadioGroup>
+
     <Switch
-        android:id="@+id/PreloadedCargoSwitch"
+        android:id="@+id/switch_preload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -22,22 +71,22 @@
         android:layout_marginTop="20dp"
         android:thumb="@drawable/thumb_states"
         android:track="@drawable/track_states"
-        app:layout_constraintStart_toStartOf="@+id/IDToggleInstructions"
-        app:layout_constraintTop_toBottomOf="@+id/IDToggleInstructions" />
+        app:layout_constraintStart_toStartOf="@+id/tv_toggle_instructions"
+        app:layout_constraintTop_toBottomOf="@+id/tv_toggle_instructions" />
 
     <TextView
-        android:id="@+id/IDSetupDirections"
+        android:id="@+id/tv_setup_directions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans_italic"
         android:text="@string/SetupDirections"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/instruction_text_size"
-        app:layout_constraintStart_toStartOf="@+id/IDSetup"
-        app:layout_constraintTop_toBottomOf="@+id/IDSetup" />
+        app:layout_constraintStart_toStartOf="@+id/tv_setup_header"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setup_header" />
 
     <EditText
-        android:id="@+id/ScouterNameInput"
+        android:id="@+id/et_scouter_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -49,11 +98,11 @@
         android:inputType="textPersonName"
         android:tag="ScouterName"
         android:textColor="@color/charcoal"
-        app:layout_constraintStart_toStartOf="@+id/IDScouterName"
-        app:layout_constraintTop_toBottomOf="@+id/IDScouterName" />
+        app:layout_constraintStart_toStartOf="@+id/tv_scouter"
+        app:layout_constraintTop_toBottomOf="@+id/tv_scouter" />
 
     <TextView
-        android:id="@+id/IDScouterName"
+        android:id="@+id/tv_scouter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -62,11 +111,11 @@
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="@+id/IDSetupDirections"
-        app:layout_constraintTop_toBottomOf="@+id/IDSetupDirections" />
+        app:layout_constraintStart_toStartOf="@+id/tv_setup_directions"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setup_directions" />
 
     <Switch
-        android:id="@+id/NoShowSwitch"
+        android:id="@+id/switch_no_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -74,11 +123,11 @@
         android:layout_marginTop="12dp"
         android:thumb="@drawable/thumb_states"
         android:track="@drawable/track_states"
-        app:layout_constraintStart_toStartOf="@+id/PreloadedCargoSwitch"
-        app:layout_constraintTop_toBottomOf="@+id/PreloadedCargoSwitch" />
+        app:layout_constraintStart_toStartOf="@+id/switch_preload"
+        app:layout_constraintTop_toBottomOf="@+id/switch_preload" />
 
     <TextView
-        android:id="@+id/IDMatchNumber"
+        android:id="@+id/tv_match_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -86,22 +135,22 @@
         android:text="@string/MatchNumberID"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintStart_toStartOf="@+id/ScouterNameInput"
-        app:layout_constraintTop_toBottomOf="@+id/ScouterNameInput" />
+        app:layout_constraintStart_toStartOf="@+id/et_scouter_name"
+        app:layout_constraintTop_toBottomOf="@+id/et_scouter_name" />
 
     <TextView
-        android:id="@+id/IDAlliancePartners"
+        android:id="@+id/tv_alliance_partners"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/AlliancePartnersID"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintStart_toStartOf="@+id/IDTeamNumber"
-        app:layout_constraintTop_toBottomOf="@+id/TeamNumberInput" />
+        app:layout_constraintStart_toStartOf="@+id/tv_team_number"
+        app:layout_constraintTop_toBottomOf="@+id/et_team_number" />
 
     <EditText
-        android:id="@+id/MatchNumberInput"
+        android:id="@+id/et_match_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -114,11 +163,11 @@
         android:maxLength="3"
         android:tag="MatchNumber"
         android:textColor="@color/charcoal"
-        app:layout_constraintStart_toStartOf="@+id/IDMatchNumber"
-        app:layout_constraintTop_toBottomOf="@+id/IDMatchNumber" />
+        app:layout_constraintStart_toStartOf="@+id/tv_match_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_match_number" />
 
     <TextView
-        android:id="@+id/IDTeamNumber"
+        android:id="@+id/tv_team_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -126,11 +175,11 @@
         android:text="@string/TeamNumberID"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintStart_toStartOf="@+id/MatchNumberInput"
-        app:layout_constraintTop_toBottomOf="@+id/MatchNumberInput" />
+        app:layout_constraintStart_toStartOf="@+id/et_match_number"
+        app:layout_constraintTop_toBottomOf="@+id/et_match_number" />
 
     <EditText
-        android:id="@+id/FirstAlliancePartnerInput"
+        android:id="@+id/et_first_alliance_partner"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -141,14 +190,14 @@
         android:importantForAutofill="no"
         android:inputType="number"
         android:maxLength="5"
-        android:nextFocusDown="@+id/SecondAlliancePartnerInput"
+        android:nextFocusDown="@+id/et_second_alliance_partner"
         android:tag="Alliance1"
         android:textColor="@color/charcoal"
-        app:layout_constraintStart_toStartOf="@+id/IDAlliancePartners"
-        app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
+        app:layout_constraintStart_toStartOf="@+id/tv_alliance_partners"
+        app:layout_constraintTop_toBottomOf="@+id/tv_alliance_partners" />
 
     <EditText
-        android:id="@+id/TeamNumberInput"
+        android:id="@+id/et_team_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -161,11 +210,11 @@
         android:maxLength="5"
         android:tag="TeamNumber"
         android:textColor="@color/charcoal"
-        app:layout_constraintStart_toStartOf="@+id/IDTeamNumber"
-        app:layout_constraintTop_toBottomOf="@+id/IDTeamNumber" />
+        app:layout_constraintStart_toStartOf="@+id/tv_team_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_team_number" />
 
     <EditText
-        android:id="@+id/SecondAlliancePartnerInput"
+        android:id="@+id/et_second_alliance_partner"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -179,11 +228,11 @@
         android:maxLength="5"
         android:tag="Alliance2"
         android:textColor="@color/charcoal"
-        app:layout_constraintStart_toEndOf="@+id/FirstAlliancePartnerInput"
-        app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
+        app:layout_constraintStart_toEndOf="@+id/et_first_alliance_partner"
+        app:layout_constraintTop_toBottomOf="@+id/tv_alliance_partners" />
 
     <TextView
-        android:id="@+id/IDNoShow"
+        android:id="@+id/tv_no_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -191,12 +240,12 @@
         android:text="@string/NoShow"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/NoShowSwitch"
-        app:layout_constraintStart_toEndOf="@+id/NoShowSwitch"
-        app:layout_constraintTop_toTopOf="@+id/NoShowSwitch" />
+        app:layout_constraintBottom_toBottomOf="@+id/switch_no_show"
+        app:layout_constraintStart_toEndOf="@+id/switch_no_show"
+        app:layout_constraintTop_toTopOf="@+id/switch_no_show" />
 
     <TextView
-        android:id="@+id/IDPreloadNote"
+        android:id="@+id/tv_preload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -204,12 +253,12 @@
         android:text="@string/PreloadNote"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/PreloadedCargoSwitch"
-        app:layout_constraintStart_toEndOf="@+id/PreloadedCargoSwitch"
-        app:layout_constraintTop_toTopOf="@+id/PreloadedCargoSwitch" />
+        app:layout_constraintBottom_toBottomOf="@+id/switch_preload"
+        app:layout_constraintStart_toEndOf="@+id/switch_preload"
+        app:layout_constraintTop_toTopOf="@+id/switch_preload" />
 
     <TextView
-        android:id="@+id/IDAllianceColor"
+        android:id="@+id/tv_alliance_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -217,22 +266,34 @@
         android:text="@string/AllianceColorID"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintStart_toStartOf="@+id/IDAlliancePartners"
-        app:layout_constraintTop_toBottomOf="@+id/FirstAlliancePartnerInput" />
+        app:layout_constraintStart_toStartOf="@+id/tv_alliance_partners"
+        app:layout_constraintTop_toBottomOf="@+id/et_first_alliance_partner" />
+
+    <TextView
+        android:id="@+id/tv_robot_assignment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/RobotAssignmentID"
+        android:textColor="@drawable/text_states"
+        android:textSize="@dimen/input_label_text_size"
+        app:layout_constraintStart_toEndOf="@+id/rg_alliance_color"
+        app:layout_constraintTop_toTopOf="@+id/tv_alliance_color" />
 
     <RadioGroup
-        android:id="@+id/MissedToggle"
+        android:id="@+id/rg_alliance_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:divider="?android:attr/dividerHorizontal"
         android:orientation="horizontal"
         android:showDividers="middle"
-        app:layout_constraintStart_toStartOf="@+id/IDAllianceColor"
-        app:layout_constraintTop_toBottomOf="@+id/IDAllianceColor">
+        app:layout_constraintStart_toStartOf="@+id/tv_alliance_color"
+        app:layout_constraintTop_toBottomOf="@+id/tv_alliance_color">
 
         <Button
-            android:id="@+id/BlueButton"
+            android:id="@+id/btn_blue"
             android:layout_width="@dimen/alliance_color_width"
             android:layout_height="@dimen/button_height"
             android:background="@drawable/toggle_blue_states"
@@ -244,7 +305,7 @@
             tools:visibility="visible" />
 
         <Button
-            android:id="@+id/RedButton"
+            android:id="@+id/btn_red"
             android:layout_width="@dimen/alliance_color_width"
             android:layout_height="@dimen/button_height"
             android:background="@drawable/toggle_red_states"
@@ -257,7 +318,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/IDSetup"
+        android:id="@+id/tv_setup_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -265,11 +326,11 @@
         android:text="@string/SetupTitle"
         android:textColor="@drawable/text_header_states"
         android:textSize="@dimen/header_text_size"
-        app:layout_constraintStart_toStartOf="@+id/SettingsButton"
-        app:layout_constraintTop_toBottomOf="@+id/SettingsButton" />
+        app:layout_constraintStart_toStartOf="@+id/btn_settings"
+        app:layout_constraintTop_toBottomOf="@+id/btn_settings" />
 
     <TextView
-        android:id="@+id/IDStartDirections"
+        android:id="@+id/tv_start_directions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
@@ -281,13 +342,13 @@
         android:text="@string/StartButtonDirections"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/StartButton"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/ClearButton"
+        android:id="@+id/btn_clear"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/button_height"
         android:layout_marginStart="32dp"
@@ -299,11 +360,25 @@
         android:text="@string/Clear"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/button_text_size"
-        app:layout_constraintStart_toEndOf="@+id/SettingsButton"
-        app:layout_constraintTop_toTopOf="@+id/SettingsButton" />
+        app:layout_constraintStart_toEndOf="@+id/btn_settings"
+        app:layout_constraintTop_toTopOf="@+id/btn_settings" />
 
     <Button
-        android:id="@+id/StartButton"
+        android:id="@+id/btn_autofill"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/button_states"
+        android:enabled="false"
+        android:fontFamily="@font/open_sans"
+        android:text="@android:string/autofill"
+        android:textColor="@drawable/text_states"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_clear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_clear" />
+
+    <Button
+        android:id="@+id/btn_start"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_start_states"
@@ -321,7 +396,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/SettingsButton"
+        android:id="@+id/btn_settings"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/button_states"
@@ -331,7 +406,7 @@
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/IDToggleInstructions"
+        android:id="@+id/tv_toggle_instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -339,8 +414,8 @@
         android:text="@string/ToggleInstructions"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/instruction_text_size"
-        app:layout_constraintStart_toStartOf="@+id/IDAllianceColor"
-        app:layout_constraintTop_toBottomOf="@+id/MissedToggle" />
+        app:layout_constraintStart_toStartOf="@+id/tv_alliance_color"
+        app:layout_constraintTop_toBottomOf="@+id/rg_alliance_color" />
 
     <!-- Left field side buttons -->
 

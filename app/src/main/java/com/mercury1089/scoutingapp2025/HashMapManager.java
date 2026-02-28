@@ -320,6 +320,7 @@ public class HashMapManager{
                 setupHashMap.put("AlliancePartner1", "");
                 setupHashMap.put("AlliancePartner2", "");
                 setupHashMap.put("AllianceColor", "");
+                setupHashMap.put("RobotAssignment", ""); // Not in QR String
                 //Note: FellOver is put in setup hashmap because its value may be updated in Auton, Teleop, or Climb
                 setupHashMap.put("FellOver", "N");
                 break;

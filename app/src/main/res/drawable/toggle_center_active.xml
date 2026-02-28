@@ -3,13 +3,13 @@
     android:shape="rectangle">
 
     <size android:height="@dimen/square_toggle_length"
-          android:width="@dimen/square_toggle_length" />
+        android:width="@dimen/square_toggle_length" />
     <corners
         android:bottomRightRadius="0dp"
-        android:bottomLeftRadius="5dp"
-        android:topLeftRadius="5dp"
+        android:bottomLeftRadius="0dp"
+        android:topLeftRadius="0dp"
         android:topRightRadius="0dp"/>
-    <solid android:color="@drawable/toggle_background_states"/>
+    <solid android:color="@color/melon"/>
     <padding
         android:bottom="5dp"
         android:left="10dp"

@@ -35,6 +35,7 @@
         <string name="TeamNumberID">TEAM #:</string>
         <string name="AlliancePartnersID">ALLIANCE PARTNERS:</string>
         <string name="AllianceColorID">ALLIANCE COLOR:</string>
+        <string name="RobotAssignmentID">ROBOT ASSIGNMENT:</string>
 
     <!-- Directions -->
         <string name="SetupDirections">Complete the fields below <b>before</b> the start of each match.</string>
@@ -44,8 +45,12 @@
     <!-- Button Texts -->
         <string name="Blue">BLUE</string>
         <string name="Red">RED</string>
+        <string name="One">1</string>
+        <string name="Two">2</string>
+        <string name="Three">3</string>
         <string name="NoShow">No robot on field</string>
         <string name="Clear">CLEAR</string>
+        <string name="Autofill">AUTOFILL</string>
         <string name="Start">START</string>
         <string name="GenerateQRCode">GENERATE QR CODE</string>
 
@@ -56,13 +61,26 @@
     <!-- ID Fields -->
         <string name="ResetID">RESET APP</string>
         <string name="GoBack">BACK</string>
-        <string name="QRCache">QR Code Cache</string>
+        <string name="AvailableQRCodes">AVAILABLE QR CODES</string>
+        <string name="PasswordID">PASSWORD</string>
+        <string name="DefaultPasswordPreview">NO PASSWORD SET</string>
+        <string name="ChangePassword">Change Password</string>
+        <string name="ChangePasswordHeader">CHANGE YOUR PASSWORD</string>
+        <string name="CreatePassword">Create Password</string>
+        <string name="CreatePasswordHeader">CREATE A PASSWORD</string>
+        <string name="ResetPassword">Reset Password</string>
+        <string name="ApiID">API</string>
+        <string name="EventKeyID">EVENT KEY</string>
+        <string name="LastFetchedAtID" formatted="true">Last fetched at: %1$s</string>
 
     <!-- Directions -->
+        <string name="CreatePasswordDirections">To prevent scouters from unexpectedly erasing data \nwithin in the app, please create a password.</string>
         <string name="ResetDirections">If a QR code fails to generate or the app is displaying persistent and incorrect active states, tap the button below.</string>
+        <string name="ApiDirections">Fetch match data from TBA.</string>
 
     <!-- Button Texts -->
         <string name="ResetButton">RESET ALL VARIABLES</string>
+        <string name="FetchMatchesButton">FETCH MATCHES</string>
         <string name="QRCacheItem">Team Number: %1$s &#160;&#160;&#160;&#160;&#160;&#160; Match Number: %2$s</string>
 
 

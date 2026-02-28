@@ -35,4 +35,5 @@
     <dimen name="right_pos_padding">60dp</dimen>
     <dimen name="button_height">50dp</dimen>
     <dimen name="alliance_color_width">90dp</dimen>
+    <dimen name="robot_assignment_width">60dp</dimen>
 </resources>

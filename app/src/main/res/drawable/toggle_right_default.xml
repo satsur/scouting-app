@@ -9,7 +9,7 @@
         android:bottomLeftRadius="0dp"
         android:topLeftRadius="0dp"
         android:topRightRadius="5dp"/>
-    <solid android:color="@color/ocean"/>
+    <solid android:color="@drawable/toggle_background_states"/>
     <padding
         android:bottom="5dp"
         android:left="10dp"

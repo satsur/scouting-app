@@ -2,5 +2,6 @@
 <resources>
     <string name="HINT_TEAM_NUMBER">1089</string>
     <string name="HINT_NAME">Rahil Shiraz</string>
+    <string name="HINT_EVENT_KEY">2025mrcmp</string>
     <string name="HINT_MATCH_NUMBER">10</string>
 </resources>

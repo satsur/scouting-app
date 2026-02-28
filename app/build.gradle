@@ -1,3 +1,14 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (!localPropertiesFile.exists()) {
+    throw new GradleException("Error: no local.properties file exists. Please create one and add TBA_API_KEY before building the project.")
+}
+localProperties.load(new FileInputStream(localPropertiesFile))
+def apiKey = localProperties.getProperty("TBA_API_KEY")
+if (apiKey == null || apiKey.isEmpty()) {
+    throw new GradleException("ERROR: Missing TBA_API_KEY in local.properties. Please add it before building the project.")
+}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -5,7 +16,7 @@ android {
     compileSdkVersion 35
     defaultConfig {
         applicationId "com.mercury1089.scoutingapp2025"
-        minSdkVersion 21
+        minSdkVersion 33
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 35
         versionCode 1
@@ -23,7 +34,11 @@ android {
         targetCompatibility JavaVersion.VERSION_21
     }
     buildFeatures {
+        buildConfig true
         viewBinding true
+    }
+    defaultConfig {
+        buildConfigField "String", "TBA_API_KEY", "\"${apiKey}\""
     }
     namespace 'com.mercury1089.scoutingapp2025'
 }
@@ -43,11 +58,21 @@ dependencies {
 //    implementation 'com.google.zxing:core:3.4.0'
 //    implementation 'com.google.zxing:javase:3.4.0'
     implementation 'com.github.markushi:circlebutton:1.1'
-    implementation 'androidx.fragment:fragment:1.1.0'
+    implementation 'androidx.fragment:fragment:1.8.6'
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'com.github.kenglxn.QRGen:android:3.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
 
+    def room_version = "2.6.1"
 
+    // Room Database
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // RxJava and RxAndroid
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+    implementation "io.reactivex.rxjava3:rxjava:3.1.10"
 }

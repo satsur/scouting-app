@@ -1,6 +1,10 @@
 package com.mercury1089.scoutingapp2025;
 
+import com.mercury1089.scoutingapp2025.database.model.Match;
+import com.mercury1089.scoutingapp2025.database.util.DBUtil;
+import com.mercury1089.scoutingapp2025.databinding.ActivityPregameBinding;
 import com.mercury1089.scoutingapp2025.qr.QRRunnable;
+import com.mercury1089.scoutingapp2025.repository.MatchRepository;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -31,19 +35,29 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Objects;
 
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+
 public class PregameActivity extends AppCompatActivity {
+    private ActivityPregameBinding binding;
+
     // Strategy was here
     //Set the default password in HashMapManager.setDefaultValues();
     String password;
+    private CompositeDisposable disposables = new CompositeDisposable();
+    private MatchRepository matchRepository;
 
     //variables that store elements of the screen for the output variables
     //Buttons
     private ImageButton settingsButton;
     private Button blueButton;
     private Button redButton;
+
+    private Button oneButton, twoButton, threeButton;
     private Button clearButton;
+    private Button autofillButton;
     private Button startButton;
 
     //Text Fields
@@ -53,6 +67,7 @@ public class PregameActivity extends AppCompatActivity {
     private EditText firstAlliancePartnerInput;
     private EditText secondAlliancePartnerInput;
     private TextView startDirectionsToast;
+    private TextView robotAssignmentID;
 
     //Switches
     private Switch noShowSwitch;
@@ -84,22 +99,30 @@ public class PregameActivity extends AppCompatActivity {
      */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        binding = ActivityPregameBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_pregame);
+        matchRepository = new MatchRepository(getApplicationContext());
 
         // Initialize views here
-        scouterNameInput = findViewById(R.id.ScouterNameInput);
-        matchNumberInput = findViewById(R.id.MatchNumberInput);
-        teamNumberInput = findViewById(R.id.TeamNumberInput);
-        firstAlliancePartnerInput = findViewById(R.id.FirstAlliancePartnerInput);
-        secondAlliancePartnerInput = findViewById(R.id.SecondAlliancePartnerInput);
-        blueButton = findViewById(R.id.BlueButton);
-        redButton = findViewById(R.id.RedButton);
-        noShowSwitch = findViewById(R.id.NoShowSwitch);
-        preloadSwitch = findViewById(R.id.PreloadedCargoSwitch);
-        clearButton = findViewById(R.id.ClearButton);
-        startButton = findViewById(R.id.StartButton);
-        settingsButton = findViewById(R.id.SettingsButton);
-        startDirectionsToast = findViewById(R.id.IDStartDirections);
+        scouterNameInput = findViewById(R.id.et_scouter_name);
+        matchNumberInput = findViewById(R.id.et_match_number);
+        teamNumberInput = findViewById(R.id.et_team_number);
+        firstAlliancePartnerInput = findViewById(R.id.et_first_alliance_partner);
+        secondAlliancePartnerInput = findViewById(R.id.et_second_alliance_partner);
+        blueButton = findViewById(R.id.btn_blue);
+        redButton = findViewById(R.id.btn_red);
+        oneButton = findViewById(R.id.btn_first_robot);
+        twoButton = findViewById(R.id.btn_second_robot);
+        threeButton = findViewById(R.id.btn_third_robot);
+        noShowSwitch = findViewById(R.id.switch_no_show);
+        preloadSwitch = findViewById(R.id.switch_preload);
+        clearButton = findViewById(R.id.btn_clear);
+        autofillButton = findViewById(R.id.btn_autofill);
+        startButton = findViewById(R.id.btn_start);
+        settingsButton = findViewById(R.id.btn_settings);
+        startDirectionsToast = findViewById(R.id.tv_start_directions);
+        robotAssignmentID = findViewById(R.id.tv_robot_assignment);
 
         rooster = MediaPlayer.create(PregameActivity.this, R.raw.sound);
 
@@ -232,6 +255,7 @@ public class PregameActivity extends AppCompatActivity {
 
                 if (requiredPassword.equals("N")) {
                     HashMapManager.putSetupHashMap(setupHashMap);
+                    disposables.clear();
                     Intent intent = new Intent(PregameActivity.this, SettingsActivity.class);
                     startActivity(intent);
                     finish();
@@ -268,6 +292,7 @@ public class PregameActivity extends AppCompatActivity {
                         String savedPassword = !password.equals("") ? password : PregameActivity.this.password;
                         if (passwordField.getText().toString().equals(savedPassword)) {
                             HashMapManager.putSetupHashMap(setupHashMap);
+                            disposables.clear();
                             Intent intent = new Intent(PregameActivity.this, SettingsActivity.class);
                             startActivity(intent);
                             dialog.dismiss();
@@ -359,10 +384,28 @@ public class PregameActivity extends AppCompatActivity {
             }
         });
 
+        oneButton.setOnClickListener(view -> {
+            setupHashMap.put("RobotAssignment", "1");
+            updateXMLObjects(false);
+        });
+
+        twoButton.setOnClickListener(view -> {
+            setupHashMap.put("RobotAssignment", "2");
+            updateXMLObjects(false);
+        });
+
+        threeButton.setOnClickListener(view -> {
+            setupHashMap.put("RobotAssignment", "3");
+            updateXMLObjects(false);
+        });
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Ensure that any async operations (like fetching from database) are cancelled
+                disposables.clear();
                 if (isQRButton) {
+
                     Dialog dialog = new Dialog(PregameActivity.this);
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     dialog.setContentView(R.layout.generate_qrcode_confirm_popup);
@@ -467,6 +510,46 @@ public class PregameActivity extends AppCompatActivity {
                 });
             }
         });
+
+        autofillButton.setOnClickListener(view -> {
+            if (!canAutoFill()) {
+                Toast.makeText(getApplicationContext(), "Match Number, Alliance Color, and Robot Assignment are required to autofill.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            int matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
+            disposables.add(matchRepository.getStoredEventKey().subscribe(
+                    eventKey -> {
+                        String assignment = (setupHashMap.get("AllianceColor").charAt(0) + setupHashMap.get("RobotAssignment")).toUpperCase();
+                        disposables.add(matchRepository.getStoredMatch(DBUtil.createQualificationMatchKey(eventKey, matchNumber)).subscribe(
+                                match -> autofillMatchInfo(match, assignment),
+                                throwable -> Toast.makeText(getApplicationContext(), "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show()
+                        ));
+                    },
+                    throwable -> Toast.makeText(getApplicationContext(), "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show()
+            ));
+
+        });
+    }
+
+    public void autofillMatchInfo(Match match, String assignment) {
+        boolean allianceColor = assignment.toLowerCase().charAt(0) == 'r'; // 1 = red, 0 = blue
+        List<Integer> teams = allianceColor ? match.getRedAllianceTeams() : match.getBlueAllianceTeams();
+        // Clear boxes that are going to be autofilled
+        teamNumberInput.getText().clear();
+        firstAlliancePartnerInput.getText().clear();
+        secondAlliancePartnerInput.getText().clear();
+        int assignmentNumber = Integer.parseInt(String.valueOf(assignment.charAt(assignment.length()-1))) - 1; // because teams is zero-indexed
+        for (int i = 0; i < teams.size(); i++) {
+            int team = teams.get(i);
+            if (i == assignmentNumber) teamNumberInput.setText(String.valueOf(team));
+            else if (firstAlliancePartnerInput.getText().toString().isEmpty()) {
+                firstAlliancePartnerInput.setText(String.valueOf(team));
+            }
+            else {
+                secondAlliancePartnerInput.setText(String.valueOf(team));
+            }
+        }
+        Toast.makeText(getApplicationContext(), "Successfully autofilled match info!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -509,7 +592,14 @@ public class PregameActivity extends AppCompatActivity {
                 firstAlliancePartnerInput.getText().length() > 0 &&
                 secondAlliancePartnerInput.getText().length() > 0 &&
                 !setupHashMap.get("AllianceColor").isEmpty() &&
+                !setupHashMap.get("RobotAssignment").isEmpty() &&
                 (Objects.equals(setupHashMap.get("NoShow"), "Y") || Objects.equals(setupHashMap.get("NoShow"), "N"));
+    }
+
+    private boolean canAutoFill() {
+        return !matchNumberInput.getText().toString().isEmpty() &&
+                !setupHashMap.get("AllianceColor").isEmpty() &&
+                !setupHashMap.get("RobotAssignment").isEmpty();
     }
 
     /*
@@ -523,7 +613,24 @@ public class PregameActivity extends AppCompatActivity {
                 noShowSwitch.isChecked() ||
                 firstAlliancePartnerInput.getText().length() > 0 ||
                 secondAlliancePartnerInput.getText().length() > 0 ||
-                blueButton.isSelected() || redButton.isSelected();
+                blueButton.isSelected() || redButton.isSelected() ||
+                oneButton.isSelected() || twoButton.isSelected() || threeButton.isSelected();
+    }
+
+    private void setRobotAssignmentButtonsEnabled(boolean enabled) {
+        if (!enabled) setupHashMap.put("RobotAssignment", "");
+        robotAssignmentID.setEnabled(enabled);
+        oneButton.setEnabled(enabled);
+        twoButton.setEnabled(enabled);
+        threeButton.setEnabled(enabled);
+    }
+
+    private void setRobotAssignmentButtonsBackground(String allianceColor) {
+        int bgDrawableID = allianceColor == "Red" ? R.drawable.toggle_red_states : allianceColor == "Blue" ? R.drawable.toggle_blue_states : 0;
+        if (bgDrawableID == 0) return;
+        oneButton.setBackground(getDrawable(bgDrawableID));
+        twoButton.setBackground(getDrawable(bgDrawableID));
+        threeButton.setBackground(getDrawable(bgDrawableID));
     }
 
     /*
@@ -534,6 +641,8 @@ public class PregameActivity extends AppCompatActivity {
     private void updateXMLObjects(boolean updateText) {
         boolean readyToStart = readyToStart();
         boolean canClear = canClearInputs();
+
+        autofillButton.setEnabled(!matchNumberInput.getText().toString().isEmpty());
 
         /*
         - updateText should only be true if you want to reset the basic info fields to the stored hashmap values
@@ -546,9 +655,15 @@ public class PregameActivity extends AppCompatActivity {
             firstAlliancePartnerInput.setText(setupHashMap.get("AlliancePartner1"));
             secondAlliancePartnerInput.setText(setupHashMap.get("AlliancePartner2"));
         }
+        setRobotAssignmentButtonsEnabled(!setupHashMap.get("AllianceColor").isEmpty());
+        // Dynamically set background of robot assignment buttons
+        setRobotAssignmentButtonsBackground(setupHashMap.get("AllianceColor"));
 
         blueButton.setSelected(setupHashMap.get("AllianceColor").equals("Blue"));
         redButton.setSelected(setupHashMap.get("AllianceColor").equals("Red"));
+        oneButton.setSelected(setupHashMap.get("RobotAssignment").equals("1"));
+        twoButton.setSelected(setupHashMap.get("RobotAssignment").equals("2"));
+        threeButton.setSelected(setupHashMap.get("RobotAssignment").equals("3"));
 
         if (settingsHashMap.get("Slack").equals("1"))
             slackCenter.setVisibility(View.VISIBLE);
