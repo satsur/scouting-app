@@ -60,7 +60,7 @@ public class MatchActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.exit_confirm_popup);
 
         Button exitConfirm = dialog.findViewById(R.id.ExitConfirm);
-        Button cancelConfirm = dialog.findViewById(R.id.CancelConfirm);
+        Button cancelConfirm = dialog.findViewById(R.id.btn_cancel);
 
         dialog.show();
 

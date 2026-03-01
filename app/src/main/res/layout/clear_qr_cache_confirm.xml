@@ -8,7 +8,7 @@
     android:padding="@dimen/padding">
 
     <Button
-        android:id="@+id/ClearConfirm"
+        android:id="@+id/btn_clear_confirm"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -20,10 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IDQRWarningDirections" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_clear_warning" />
 
     <Button
-        android:id="@+id/CancelConfirm"
+        android:id="@+id/btn_cancel"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
@@ -35,10 +35,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ClearConfirm" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_clear_confirm" />
 
     <TextView
-        android:id="@+id/IDQRWarningDirections"
+        android:id="@+id/tv_clear_warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -47,10 +47,10 @@
         android:textColor="@color/bootstrap_brand_secondary_border"
         android:textSize="@dimen/instruction_text_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IDClear" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_clear_header" />
 
     <TextView
-        android:id="@+id/IDClear"
+        android:id="@+id/tv_clear_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/futura_medium_condensed_bt"
@@ -65,10 +65,10 @@
         android:layout_width="400dp"
         android:layout_height="2dp"
         android:background="@color/ocean"
-        app:layout_constraintBottom_toTopOf="@+id/ClearConfirm"
+        app:layout_constraintBottom_toTopOf="@+id/btn_clear_confirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IDQRWarningDirections" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_clear_warning" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

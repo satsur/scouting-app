@@ -19,10 +19,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IDQRWarningDirections" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_clear_warning" />
 
     <Button
-        android:id="@+id/CancelConfirm"
+        android:id="@+id/btn_cancel"
         android:layout_width="496dp"
         android:layout_height="75dp"
         android:layout_marginTop="16dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ExitConfirm" />
 
     <TextView
-        android:id="@+id/IDQRWarningDirections"
+        android:id="@+id/tv_clear_warning"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

@@ -116,8 +116,8 @@ public class SettingsActivity extends AppCompatActivity {
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.clear_qr_cache_confirm);
 
-            Button clearConfirm = dialog.findViewById(R.id.ClearConfirm);
-            Button cancelConfirm = dialog.findViewById(R.id.CancelConfirm);
+            Button clearConfirm = dialog.findViewById(R.id.btn_clear_confirm);
+            Button cancelConfirm = dialog.findViewById(R.id.btn_cancel);
 
             dialog.show();
 

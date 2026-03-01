@@ -2,8 +2,6 @@ package com.mercury1089.scoutingapp2025;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -20,13 +17,7 @@ import java.util.LinkedHashMap;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
 import com.mercury1089.scoutingapp2025.qr.QRRunnable;
-import com.mercury1089.scoutingapp2025.utils.GenUtils;
-import com.mercury1089.scoutingapp2025.utils.QRStringBuilder;
 
 public class Climb extends Fragment {
     //HashMaps for sending QR data between screens
@@ -150,7 +141,7 @@ public class Climb extends Fragment {
                 dialog.setContentView(R.layout.generate_qrcode_confirm_popup);
 
                 Button generateQRButton = dialog.findViewById(R.id.GenerateQRButton);
-                Button cancelConfirm = dialog.findViewById(R.id.CancelConfirm);
+                Button cancelConfirm = dialog.findViewById(R.id.btn_cancel);
 
                 dialog.show();
 

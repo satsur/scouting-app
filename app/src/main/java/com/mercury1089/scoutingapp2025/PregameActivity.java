@@ -3,6 +3,7 @@ package com.mercury1089.scoutingapp2025;
 import com.mercury1089.scoutingapp2025.database.model.Match;
 import com.mercury1089.scoutingapp2025.database.util.DBUtil;
 import com.mercury1089.scoutingapp2025.databinding.ActivityPregameBinding;
+import com.mercury1089.scoutingapp2025.databinding.ClearConfirmPopupBinding;
 import com.mercury1089.scoutingapp2025.qr.QRRunnable;
 import com.mercury1089.scoutingapp2025.repository.MatchRepository;
 
@@ -25,10 +26,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -367,7 +365,7 @@ public class PregameActivity extends AppCompatActivity {
                     dialog.setContentView(R.layout.generate_qrcode_confirm_popup);
 
                     Button generateQRButton = dialog.findViewById(R.id.GenerateQRButton);
-                    Button cancelConfirm = dialog.findViewById(R.id.CancelConfirm);
+                    Button cancelConfirm = dialog.findViewById(R.id.btn_cancel);
 
                     dialog.show();
 
@@ -456,19 +454,18 @@ public class PregameActivity extends AppCompatActivity {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.clear_confirm_popup);
 
-                Button clearConfirm = dialog.findViewById(R.id.ClearConfirm);
-                Button cancelConfirm = dialog.findViewById(R.id.CancelConfirm);
+                ClearConfirmPopupBinding dialogBinding = ClearConfirmPopupBinding.inflate(getLayoutInflater());
 
                 dialog.show();
 
-                cancelConfirm.setOnClickListener(new View.OnClickListener() {
+                dialogBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
                     }
                 });
 
-                clearConfirm.setOnClickListener(new View.OnClickListener() {
+                dialogBinding.btnClearConfirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();

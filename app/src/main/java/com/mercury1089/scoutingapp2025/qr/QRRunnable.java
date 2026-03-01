@@ -2,10 +2,8 @@ package com.mercury1089.scoutingapp2025.qr;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -13,11 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.zxing.WriterException;
 import com.mercury1089.scoutingapp2025.HashMapManager;
 import com.mercury1089.scoutingapp2025.PregameActivity;
 import com.mercury1089.scoutingapp2025.R;
-import com.mercury1089.scoutingapp2025.SettingsActivity;
 import com.mercury1089.scoutingapp2025.utils.GenUtils;
 import com.mercury1089.scoutingapp2025.utils.QRStringBuilder;
 
@@ -97,7 +93,7 @@ public class QRRunnable implements Runnable {
                         confirmDialog.setContentView(R.layout.setup_next_match_confirm_popup);
 
                         Button setupNextMatchButton = confirmDialog.findViewById(R.id.SetupNextMatchButton);
-                        Button cancelConfirm = confirmDialog.findViewById(R.id.CancelConfirm);
+                        Button cancelConfirm = confirmDialog.findViewById(R.id.btn_cancel);
 
                         confirmDialog.show();
 
