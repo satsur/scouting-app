@@ -158,21 +158,21 @@ public class Auton extends Fragment implements UpdateListener {
         secondsRemaining = getView().findViewById(R.id.AutonSeconds);
         teleopWarning = getView().findViewById(R.id.TeleopWarning);
 
-            scoringDirectionsID = getView().findViewById(R.id.IDPossessionDirections);
-            coralID = getView().findViewById(R.id.IDCoral);
-            reefID = getView().findViewById(R.id.IDReef);
-            L4ReefID = getView().findViewById(R.id.IDL4Coral);
-            L3ReefID = getView().findViewById(R.id.IDL3Coral);
+            scoringDirectionsID = getView().findViewById(R.id.tv_possession_directions);
+            coralID = getView().findViewById(R.id.tv_coral_header);
+            reefID = getView().findViewById(R.id.tv_reef);
+            L4ReefID = getView().findViewById(R.id.tv_l4_coral);
+            L3ReefID = getView().findViewById(R.id.tv_l3_coral);
             L2ReefID = getView().findViewById(R.id.IDL2Coral);
             L1ReefID = getView().findViewById(R.id.IDL1Coral);
 
-            scoredL4ID = getView().findViewById(R.id.IDL4Scored);
-            scoredL3ID = getView().findViewById(R.id.IDL3Scored);
+            scoredL4ID = getView().findViewById(R.id.tv_l4_scored);
+            scoredL3ID = getView().findViewById(R.id.tv_l3_scored);
             scoredL2ID = getView().findViewById(R.id.IDL2Scored);
             scoredL1ID = getView().findViewById(R.id.IDL1Scored);
 
-            missedL4ID = getView().findViewById(R.id.IDL4Missed);
-            missedL3ID = getView().findViewById(R.id.IDL3Missed);
+            missedL4ID = getView().findViewById(R.id.tv_l4_missed);
+            missedL3ID = getView().findViewById(R.id.tv_l3_missed);
             missedL2ID = getView().findViewById(R.id.IDL2Missed);
             missedL1ID = getView().findViewById(R.id.IDL1Missed);
 
@@ -205,8 +205,8 @@ public class Auton extends Fragment implements UpdateListener {
             scoredL1Counter = getView().findViewById(R.id.L1ScoredCounter);
             missedL1Counter = getView().findViewById(R.id.L1MissedCounter);
 
-            algaeID = getView().findViewById(R.id.IDAlgae);
-            dealgaefyingID = getView().findViewById(R.id.IDDealgaefying);
+            algaeID = getView().findViewById(R.id.tv_algae_header);
+            dealgaefyingID = getView().findViewById(R.id.tv_dealgaefying);
             L3AlgaeID = getView().findViewById(R.id.IDL3Algae);
             L2AlgaeID = getView().findViewById(R.id.IDL2Algae);
 

@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="@+id/coralLayout">
 
         <TextView
-            android:id="@+id/IDAlgae"
+            android:id="@+id/tv_algae_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/IDDealgaefying"
+            android:id="@+id/tv_dealgaefying"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
@@ -40,7 +40,7 @@
             android:textSize="@dimen/alt_subheader_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDAlgae" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_algae_header" />
 
         <TextView
             android:id="@+id/IDL3Algae"
@@ -76,7 +76,7 @@
             android:orientation="horizontal"
             android:showDividers="middle"
             app:layout_constraintStart_toEndOf="@+id/IDL3Removed"
-            app:layout_constraintTop_toBottomOf="@+id/IDDealgaefying">
+            app:layout_constraintTop_toBottomOf="@+id/tv_dealgaefying">
 
             <ImageButton
                 android:id="@+id/notRemovedL3Button"
@@ -326,11 +326,11 @@
         android:id="@+id/coralLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/IDPossessionDirections"
-        app:layout_constraintTop_toBottomOf="@+id/IDPossessionDirections">
+        app:layout_constraintStart_toStartOf="@+id/tv_possession_directions"
+        app:layout_constraintTop_toBottomOf="@+id/tv_possession_directions">
 
         <TextView
-            android:id="@+id/IDCoral"
+            android:id="@+id/tv_coral_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
@@ -342,28 +342,28 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/IDL4Coral"
+            android:id="@+id/tv_l4_coral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
             android:text="@string/L4"
             android:textColor="@drawable/text_subead_states"
             android:textSize="@dimen/alt_header_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/IDL4Missed"
+            app:layout_constraintBottom_toTopOf="@+id/tv_l4_missed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDL4Scored" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_l4_scored" />
 
         <TextView
-            android:id="@+id/IDL3Coral"
+            android:id="@+id/tv_l3_coral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
             android:text="@string/L3"
             android:textColor="@drawable/text_subead_states"
             android:textSize="@dimen/alt_header_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/IDL3Missed"
+            app:layout_constraintBottom_toTopOf="@+id/tv_l3_missed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDL3Scored" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_l3_scored" />
 
         <TextView
             android:id="@+id/IDL2Coral"
@@ -390,7 +390,7 @@
             app:layout_constraintTop_toBottomOf="@+id/IDL1Scored" />
 
         <TextView
-            android:id="@+id/IDReef"
+            android:id="@+id/tv_reef"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
@@ -399,7 +399,7 @@
             android:textSize="@dimen/alt_subheader_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDCoral" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_coral_header" />
 
         <RadioGroup
             android:id="@+id/L4ScoredButtonGroup"
@@ -410,8 +410,8 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toEndOf="@+id/IDL4Scored"
-            app:layout_constraintTop_toBottomOf="@+id/IDReef">
+            app:layout_constraintStart_toEndOf="@+id/tv_l4_scored"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reef">
 
             <ImageButton
                 android:id="@+id/notScoredL4Button"
@@ -471,7 +471,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/IDL4Scored"
+            android:id="@+id/tv_l4_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -480,7 +480,7 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@id/L4ScoredButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/IDL4Coral"
+            app:layout_constraintStart_toEndOf="@+id/tv_l4_coral"
             app:layout_constraintTop_toTopOf="@id/L4ScoredButtonGroup" />
 
         <TextView
@@ -501,7 +501,7 @@
             app:layout_constraintTop_toTopOf="@+id/L4ScoredButtonGroup" />
 
         <TextView
-            android:id="@+id/IDL4Missed"
+            android:id="@+id/tv_l4_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -509,7 +509,7 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@id/L4MissedButtonGroup"
-            app:layout_constraintEnd_toEndOf="@+id/IDL4Scored"
+            app:layout_constraintEnd_toEndOf="@+id/tv_l4_scored"
             app:layout_constraintTop_toTopOf="@+id/L4MissedButtonGroup" />
 
         <TextView
@@ -538,7 +538,7 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toEndOf="@+id/IDL3Scored"
+            app:layout_constraintStart_toEndOf="@+id/tv_l3_scored"
             app:layout_constraintTop_toBottomOf="@+id/L4MissedButtonGroup">
 
             <ImageButton
@@ -599,7 +599,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/IDL3Scored"
+            android:id="@+id/tv_l3_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -607,7 +607,7 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@id/L3ScoredButtonGroup"
-            app:layout_constraintStart_toStartOf="@+id/IDL4Scored"
+            app:layout_constraintStart_toStartOf="@+id/tv_l4_scored"
             app:layout_constraintTop_toTopOf="@id/L3ScoredButtonGroup" />
 
         <TextView
@@ -628,7 +628,7 @@
             app:layout_constraintTop_toTopOf="@+id/L3ScoredButtonGroup" />
 
         <TextView
-            android:id="@+id/IDL3Missed"
+            android:id="@+id/tv_l3_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -636,8 +636,8 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/L3MissedButtonGroup"
-            app:layout_constraintEnd_toEndOf="@+id/IDL3Scored"
-            app:layout_constraintStart_toStartOf="@+id/IDL3Scored"
+            app:layout_constraintEnd_toEndOf="@+id/tv_l3_scored"
+            app:layout_constraintStart_toStartOf="@+id/tv_l3_scored"
             app:layout_constraintTop_toTopOf="@+id/L3MissedButtonGroup" />
 
         <TextView
@@ -735,7 +735,7 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@id/L2ScoredButtonGroup"
-            app:layout_constraintStart_toStartOf="@+id/IDL3Scored"
+            app:layout_constraintStart_toStartOf="@+id/tv_l3_scored"
             app:layout_constraintTop_toTopOf="@id/L2ScoredButtonGroup" />
 
         <TextView
@@ -1423,7 +1423,7 @@
         app:layout_constraintStart_toEndOf="@+id/leftEdgeBar" />
 
     <TextView
-        android:id="@+id/IDPossessionDirections"
+        android:id="@+id/tv_possession_directions"
         android:layout_width="535dp"
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
@@ -1473,7 +1473,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/rightEdgeBar"
         app:layout_constraintStart_toEndOf="@+id/leftEdgeBar"
-        app:layout_constraintTop_toTopOf="@+id/IDPossessionDirections" />
+        app:layout_constraintTop_toTopOf="@+id/tv_possession_directions" />
 
     <TextView
         android:id="@+id/IDLeave"
