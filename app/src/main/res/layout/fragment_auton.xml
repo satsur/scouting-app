@@ -1064,7 +1064,7 @@
             app:layout_constraintTop_toTopOf="@+id/ProcessorMissedButtonGroup" />
 
         <TextView
-            android:id="@+id/IDNet"
+            android:id="@+id/tv_net"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
@@ -1076,7 +1076,7 @@
             app:layout_constraintTop_toBottomOf="@+id/ProcessorMissedButtonGroup" />
 
         <TextView
-            android:id="@+id/IDNetScored"
+            android:id="@+id/tv_net_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -1089,7 +1089,7 @@
             app:layout_constraintTop_toTopOf="@+id/NetScoredButtonGroup" />
 
         <TextView
-            android:id="@+id/netScoredCounter"
+            android:id="@+id/tv_net_scored_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="11dp"
@@ -1106,7 +1106,7 @@
             app:layout_constraintTop_toTopOf="@+id/NetScoredButtonGroup" />
 
         <TextView
-            android:id="@+id/netMissedCounter"
+            android:id="@+id/tv_net_missed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -1118,11 +1118,11 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/netScoredCounter"
+            app:layout_constraintEnd_toEndOf="@+id/tv_net_scored_counter"
             app:layout_constraintTop_toTopOf="@+id/NetMissedButtonGroup" />
 
         <TextView
-            android:id="@+id/IDNetMissed"
+            android:id="@+id/tv_net_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -1130,7 +1130,7 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/IDNetScored"
+            app:layout_constraintEnd_toEndOf="@+id/tv_net_scored"
             app:layout_constraintTop_toTopOf="@+id/NetMissedButtonGroup" />
 
         <RadioGroup
@@ -1142,11 +1142,11 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintEnd_toStartOf="@+id/netScoredCounter"
-            app:layout_constraintTop_toBottomOf="@+id/IDNet">
+            app:layout_constraintEnd_toStartOf="@+id/tv_net_scored_counter"
+            app:layout_constraintTop_toBottomOf="@+id/tv_net">
 
             <ImageButton
-                android:id="@+id/notScoredNetButton"
+                android:id="@+id/btn_net_minus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -1157,7 +1157,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/scoredNetButton"
+                android:id="@+id/btn_net_plus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -1180,7 +1180,7 @@
             app:layout_constraintTop_toBottomOf="@+id/NetScoredButtonGroup">
 
             <ImageButton
-                android:id="@+id/notMissedNetButton"
+                android:id="@+id/btn_net_minus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -1191,7 +1191,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/missedNetButton"
+                android:id="@+id/btn_net_plus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"

@@ -243,15 +243,15 @@ public class Auton extends Fragment implements UpdateListener {
             scoredProcessorCounter = getView().findViewById(R.id.btn_processor_scored_counter);
             missedProcessorCounter = getView().findViewById(R.id.btn_processor_missed_counter);
 
-            netID = getView().findViewById(R.id.IDNet);
-            scoredNetID = getView().findViewById(R.id.IDNetScored);
-            missedNetID = getView().findViewById(R.id.IDNetMissed);
-            scoredNetButton = getView().findViewById(R.id.scoredNetButton);
-            notScoredNetButton = getView().findViewById(R.id.notScoredNetButton);
-            missedNetButton = getView().findViewById(R.id.missedNetButton);
-            notMissedNetButton = getView().findViewById(R.id.notMissedNetButton);
-            scoredNetCounter = getView().findViewById(R.id.netScoredCounter);
-            missedNetCounter = getView().findViewById(R.id.netMissedCounter);
+            netID = getView().findViewById(R.id.tv_net);
+            scoredNetID = getView().findViewById(R.id.tv_net_scored);
+            missedNetID = getView().findViewById(R.id.tv_net_missed);
+            scoredNetButton = getView().findViewById(R.id.btn_net_plus_scored);
+            notScoredNetButton = getView().findViewById(R.id.btn_net_minus_scored);
+            missedNetButton = getView().findViewById(R.id.btn_net_plus_missed);
+            notMissedNetButton = getView().findViewById(R.id.btn_net_minus_missed);
+            scoredNetCounter = getView().findViewById(R.id.tv_net_scored_counter);
+            missedNetCounter = getView().findViewById(R.id.tv_net_missed_counter);
 
             possessionCoralID = getView().findViewById(R.id.IDCoralPossession);
             pickedUpCoralID = getView().findViewById(R.id.IDCoralPossessed);
