@@ -43,28 +43,29 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_algae_header" />
 
         <TextView
-            android:id="@+id/IDL3Algae"
+            android:id="@+id/tv_l3_algae"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
             android:text="@string/L3"
             android:textColor="@drawable/text_subead_states"
             android:textSize="@dimen/alt_header_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/IDL3Attempted"
+            app:layout_constraintBottom_toTopOf="@+id/tv_l3_attempted"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDL3Removed" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_l3_removed" />
 
         <TextView
-            android:id="@+id/IDL2Algae"
+            android:id="@+id/tv_l2_algae"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
             android:text="@string/L2"
             android:textColor="@drawable/text_subead_states"
             android:textSize="@dimen/alt_header_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/IDL2Attempted"
+            app:layout_constraintBottom_toTopOf="@+id/tv_l2_attempted"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDL2Removed" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_l2_removed"
+            app:layout_constraintVertical_bias="0.0" />
 
         <RadioGroup
             android:id="@+id/L3RemovedButtonGroup"
@@ -75,11 +76,11 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toEndOf="@+id/IDL3Removed"
+            app:layout_constraintStart_toEndOf="@+id/tv_l3_removed"
             app:layout_constraintTop_toBottomOf="@+id/tv_dealgaefying">
 
             <ImageButton
-                android:id="@+id/notRemovedL3Button"
+                android:id="@+id/btn_l3_minus_removed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -90,7 +91,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/removedL3Button"
+                android:id="@+id/btn_l3_plus_removed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -113,7 +114,7 @@
             app:layout_constraintTop_toBottomOf="@+id/L3RemovedButtonGroup">
 
             <ImageButton
-                android:id="@+id/notAttemptedL3Button"
+                android:id="@+id/btn_l3_minus_attempted"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -124,7 +125,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/attemptedL3Button"
+                android:id="@+id/btn_l3_plus_attempted"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -136,7 +137,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/IDL3Removed"
+            android:id="@+id/tv_l3_removed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -145,11 +146,11 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@id/L3RemovedButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/IDL3Algae"
+            app:layout_constraintStart_toEndOf="@+id/tv_l3_algae"
             app:layout_constraintTop_toTopOf="@id/L3RemovedButtonGroup" />
 
         <TextView
-            android:id="@+id/L3RemovedCounter"
+            android:id="@+id/tv_l3_removed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -166,7 +167,7 @@
             app:layout_constraintTop_toTopOf="@+id/L3RemovedButtonGroup" />
 
         <TextView
-            android:id="@+id/IDL3Attempted"
+            android:id="@+id/tv_l3_attempted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -174,11 +175,11 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@id/L3AttemptedButtonGroup"
-            app:layout_constraintEnd_toEndOf="@+id/IDL3Removed"
+            app:layout_constraintEnd_toEndOf="@+id/tv_l3_removed"
             app:layout_constraintTop_toTopOf="@+id/L3AttemptedButtonGroup" />
 
         <TextView
-            android:id="@+id/L3AttemptedCounter"
+            android:id="@+id/tv_l3_attempted_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -206,7 +207,7 @@
             app:layout_constraintTop_toBottomOf="@+id/L3AttemptedButtonGroup">
 
             <ImageButton
-                android:id="@+id/notRemovedL2Button"
+                android:id="@+id/btn_l2_minus_removed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -217,7 +218,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/removedL2Button"
+                android:id="@+id/btn_l2_plus_removed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -240,7 +241,7 @@
             app:layout_constraintTop_toBottomOf="@+id/L2RemovedButtonGroup">
 
             <ImageButton
-                android:id="@+id/notAttemptedL2Button"
+                android:id="@+id/btn_l2_minus_attempted"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -251,7 +252,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/attemptedL2Button"
+                android:id="@+id/btn_l2_plus_attempted"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -263,7 +264,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/IDL2Removed"
+            android:id="@+id/tv_l2_removed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -271,11 +272,11 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@id/L2RemovedButtonGroup"
-            app:layout_constraintStart_toStartOf="@+id/IDL3Removed"
+            app:layout_constraintStart_toStartOf="@+id/tv_l3_removed"
             app:layout_constraintTop_toTopOf="@+id/L2RemovedButtonGroup" />
 
         <TextView
-            android:id="@+id/L2RemovedCounter"
+            android:id="@+id/tv_l2_removed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -292,7 +293,7 @@
             app:layout_constraintTop_toTopOf="@+id/L2RemovedButtonGroup" />
 
         <TextView
-            android:id="@+id/IDL2Attempted"
+            android:id="@+id/tv_l2_attempted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -300,11 +301,11 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/L2AttemptedButtonGroup"
-            app:layout_constraintStart_toStartOf="@+id/IDL3Attempted"
+            app:layout_constraintStart_toStartOf="@+id/tv_l3_attempted"
             app:layout_constraintTop_toTopOf="@+id/L2AttemptedButtonGroup" />
 
         <TextView
-            android:id="@+id/L2AttemptedCounter"
+            android:id="@+id/tv_l2_attempted_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

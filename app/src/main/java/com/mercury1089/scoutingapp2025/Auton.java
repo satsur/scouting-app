@@ -207,31 +207,31 @@ public class Auton extends Fragment implements UpdateListener {
 
             algaeID = getView().findViewById(R.id.tv_algae_header);
             dealgaefyingID = getView().findViewById(R.id.tv_dealgaefying);
-            L3AlgaeID = getView().findViewById(R.id.IDL3Algae);
-            L2AlgaeID = getView().findViewById(R.id.IDL2Algae);
+            L3AlgaeID = getView().findViewById(R.id.tv_l3_algae);
+            L2AlgaeID = getView().findViewById(R.id.tv_l2_algae);
 
-            L3AlgaeID = getView().findViewById(R.id.IDL3Algae);
-            L2AlgaeID = getView().findViewById(R.id.IDL2Algae);
+            L3AlgaeID = getView().findViewById(R.id.tv_l3_algae);
+            L2AlgaeID = getView().findViewById(R.id.tv_l2_algae);
 
-            removedL3ID = getView().findViewById(R.id.IDL3Removed);
-            attemptedL3ID = getView().findViewById(R.id.IDL3Attempted);
-            removedL2ID = getView().findViewById(R.id.IDL2Removed);
-            attemptedL2ID = getView().findViewById(R.id.IDL2Attempted);
+            removedL3ID = getView().findViewById(R.id.tv_l3_removed);
+            attemptedL3ID = getView().findViewById(R.id.tv_l3_attempted);
+            removedL2ID = getView().findViewById(R.id.tv_l2_removed);
+            attemptedL2ID = getView().findViewById(R.id.tv_l2_attempted);
 
-            removedL3Button = getView().findViewById(R.id.removedL3Button);
-            notRemovedL3Button = getView().findViewById(R.id.notRemovedL3Button);
-            attemptedL3Button = getView().findViewById(R.id.attemptedL3Button);
-            notAttemptedL3Button = getView().findViewById(R.id.notAttemptedL3Button);
+            removedL3Button = getView().findViewById(R.id.btn_l3_plus_removed);
+            notRemovedL3Button = getView().findViewById(R.id.btn_l3_minus_removed);
+            attemptedL3Button = getView().findViewById(R.id.btn_l3_plus_attempted);
+            notAttemptedL3Button = getView().findViewById(R.id.btn_l3_minus_attempted);
 
-            removedL2Button = getView().findViewById(R.id.removedL2Button);
-            notRemovedL2Button = getView().findViewById(R.id.notRemovedL2Button);
-            attemptedL2Button = getView().findViewById(R.id.attemptedL2Button);
-            notAttemptedL2Button = getView().findViewById(R.id.notAttemptedL2Button);
+            removedL2Button = getView().findViewById(R.id.btn_l2_plus_removed);
+            notRemovedL2Button = getView().findViewById(R.id.btn_l2_minus_removed);
+            attemptedL2Button = getView().findViewById(R.id.btn_l2_plus_attempted);
+            notAttemptedL2Button = getView().findViewById(R.id.btn_l2_minus_attempted);
 
-            removedL3Counter = getView().findViewById(R.id.L3RemovedCounter);
-            attemptedL3Counter = getView().findViewById(R.id.L3AttemptedCounter);
-            removedL2Counter = getView().findViewById(R.id.L2RemovedCounter);
-            attemptedL2Counter = getView().findViewById(R.id.L2AttemptedCounter);
+            removedL3Counter = getView().findViewById(R.id.tv_l3_removed_counter);
+            attemptedL3Counter = getView().findViewById(R.id.tv_l3_attempted_counter);
+            removedL2Counter = getView().findViewById(R.id.tv_l2_removed_counter);
+            attemptedL2Counter = getView().findViewById(R.id.tv_l2_attempted_counter);
 
             processorID = getView().findViewById(R.id.IDProcessor);
             scoredProcessorID = getView().findViewById(R.id.IDProcessorScored);
