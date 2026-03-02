@@ -366,28 +366,28 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_l3_scored" />
 
         <TextView
-            android:id="@+id/IDL2Coral"
+            android:id="@+id/tv_l2_coral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
             android:text="@string/L2"
             android:textColor="@drawable/text_subead_states"
             android:textSize="@dimen/alt_header_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/IDL2Missed"
+            app:layout_constraintBottom_toTopOf="@+id/tv_l2_missed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDL2Scored" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_l2_scored" />
 
         <TextView
-            android:id="@+id/IDL1Coral"
+            android:id="@+id/tv_l1_coral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
             android:text="@string/L1"
             android:textColor="@drawable/text_subead_states"
             android:textSize="@dimen/alt_header_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/IDL1Missed"
+            app:layout_constraintBottom_toTopOf="@+id/tv_l1_missed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDL1Scored" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_l1_scored" />
 
         <TextView
             android:id="@+id/tv_reef"
@@ -402,7 +402,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_coral_header" />
 
         <RadioGroup
-            android:id="@+id/L4ScoredButtonGroup"
+            android:id="@+id/rg_l4_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -414,7 +414,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_reef">
 
             <ImageButton
-                android:id="@+id/notScoredL4Button"
+                android:id="@+id/btn_l4_minus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -425,7 +425,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/scoredL4Button"
+                android:id="@+id/btn_l4_plus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -437,18 +437,18 @@
         </RadioGroup>
 
         <RadioGroup
-            android:id="@+id/L4MissedButtonGroup"
+            android:id="@+id/rg_l4_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toStartOf="@+id/L4ScoredButtonGroup"
-            app:layout_constraintTop_toBottomOf="@+id/L4ScoredButtonGroup">
+            app:layout_constraintStart_toStartOf="@+id/rg_l4_scored"
+            app:layout_constraintTop_toBottomOf="@+id/rg_l4_scored">
 
             <ImageButton
-                android:id="@+id/notMissedL4Button"
+                android:id="@+id/btn_l4_minus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -459,7 +459,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/missedL4Button"
+                android:id="@+id/btn_l4_plus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -479,12 +479,12 @@
             android:text="@string/Scored"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/L4ScoredButtonGroup"
+            app:layout_constraintBottom_toBottomOf="@id/rg_l4_scored"
             app:layout_constraintStart_toEndOf="@+id/tv_l4_coral"
-            app:layout_constraintTop_toTopOf="@id/L4ScoredButtonGroup" />
+            app:layout_constraintTop_toTopOf="@id/rg_l4_scored" />
 
         <TextView
-            android:id="@+id/L4ScoredCounter"
+            android:id="@+id/tv_l4_scored_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -496,9 +496,9 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L4ScoredButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/L4ScoredButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/L4ScoredButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l4_scored"
+            app:layout_constraintStart_toEndOf="@+id/rg_l4_scored"
+            app:layout_constraintTop_toTopOf="@+id/rg_l4_scored" />
 
         <TextView
             android:id="@+id/tv_l4_missed"
@@ -508,12 +508,12 @@
             android:text="@string/Missed"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/L4MissedButtonGroup"
+            app:layout_constraintBottom_toBottomOf="@id/rg_l4_missed"
             app:layout_constraintEnd_toEndOf="@+id/tv_l4_scored"
-            app:layout_constraintTop_toTopOf="@+id/L4MissedButtonGroup" />
+            app:layout_constraintTop_toTopOf="@+id/rg_l4_missed" />
 
         <TextView
-            android:id="@+id/L4MissedCounter"
+            android:id="@+id/tv_l4_missed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -525,12 +525,12 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L4MissedButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/L4MissedButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/L4MissedButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l4_missed"
+            app:layout_constraintStart_toEndOf="@+id/rg_l4_missed"
+            app:layout_constraintTop_toTopOf="@+id/rg_l4_missed" />
 
         <RadioGroup
-            android:id="@+id/L3ScoredButtonGroup"
+            android:id="@+id/rg_l3_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -539,10 +539,10 @@
             android:orientation="horizontal"
             android:showDividers="middle"
             app:layout_constraintStart_toEndOf="@+id/tv_l3_scored"
-            app:layout_constraintTop_toBottomOf="@+id/L4MissedButtonGroup">
+            app:layout_constraintTop_toBottomOf="@+id/rg_l4_missed">
 
             <ImageButton
-                android:id="@+id/notScoredL3Button"
+                android:id="@+id/btn_l3_minus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -553,7 +553,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/scoredL3Button"
+                android:id="@+id/btn_l3_plus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -565,18 +565,18 @@
         </RadioGroup>
 
         <RadioGroup
-            android:id="@+id/L3MissedButtonGroup"
+            android:id="@+id/rg_l3_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toStartOf="@+id/L3ScoredButtonGroup"
-            app:layout_constraintTop_toBottomOf="@+id/L3ScoredButtonGroup">
+            app:layout_constraintStart_toStartOf="@+id/rg_l3_scored"
+            app:layout_constraintTop_toBottomOf="@+id/rg_l3_scored">
 
             <ImageButton
-                android:id="@+id/notMissedL3Button"
+                android:id="@+id/btn_l3_minus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -587,7 +587,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/missedL3Button"
+                android:id="@+id/btn_l3_plus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -606,12 +606,12 @@
             android:text="@string/Scored"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/L3ScoredButtonGroup"
+            app:layout_constraintBottom_toBottomOf="@id/rg_l3_scored"
             app:layout_constraintStart_toStartOf="@+id/tv_l4_scored"
-            app:layout_constraintTop_toTopOf="@id/L3ScoredButtonGroup" />
+            app:layout_constraintTop_toTopOf="@id/rg_l3_scored" />
 
         <TextView
-            android:id="@+id/L3ScoredCounter"
+            android:id="@+id/tv_l3_scored_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -623,9 +623,9 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L3ScoredButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/L3ScoredButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/L3ScoredButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l3_scored"
+            app:layout_constraintStart_toEndOf="@+id/rg_l3_scored"
+            app:layout_constraintTop_toTopOf="@+id/rg_l3_scored" />
 
         <TextView
             android:id="@+id/tv_l3_missed"
@@ -635,13 +635,13 @@
             android:text="@string/Missed"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L3MissedButtonGroup"
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l3_missed"
             app:layout_constraintEnd_toEndOf="@+id/tv_l3_scored"
             app:layout_constraintStart_toStartOf="@+id/tv_l3_scored"
-            app:layout_constraintTop_toTopOf="@+id/L3MissedButtonGroup" />
+            app:layout_constraintTop_toTopOf="@+id/rg_l3_missed" />
 
         <TextView
-            android:id="@+id/L3MissedCounter"
+            android:id="@+id/tv_l3_missed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -653,12 +653,12 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L3MissedButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/L3MissedButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/L3MissedButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l3_missed"
+            app:layout_constraintStart_toEndOf="@+id/rg_l3_missed"
+            app:layout_constraintTop_toTopOf="@+id/rg_l3_missed" />
 
         <RadioGroup
-            android:id="@+id/L2ScoredButtonGroup"
+            android:id="@+id/rg_l2_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -666,11 +666,11 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toEndOf="@+id/IDL2Scored"
-            app:layout_constraintTop_toBottomOf="@+id/L3MissedButtonGroup">
+            app:layout_constraintStart_toEndOf="@+id/tv_l2_scored"
+            app:layout_constraintTop_toBottomOf="@+id/rg_l3_missed">
 
             <ImageButton
-                android:id="@+id/notScoredL2Button"
+                android:id="@+id/btn_l2_minus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -681,7 +681,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/scoredL2Button"
+                android:id="@+id/btn_l2_plus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -693,18 +693,18 @@
         </RadioGroup>
 
         <RadioGroup
-            android:id="@+id/L2MissedButtonGroup"
+            android:id="@+id/rg_l2_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toStartOf="@+id/L2ScoredButtonGroup"
-            app:layout_constraintTop_toBottomOf="@+id/L2ScoredButtonGroup">
+            app:layout_constraintStart_toStartOf="@+id/rg_l2_scored"
+            app:layout_constraintTop_toBottomOf="@+id/rg_l2_scored">
 
             <ImageButton
-                android:id="@+id/notMissedL2Button"
+                android:id="@+id/btn_l2_minus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -715,7 +715,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/missedL2Button"
+                android:id="@+id/btn_l2_plus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -727,19 +727,19 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/IDL2Scored"
+            android:id="@+id/tv_l2_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:text="@string/Scored"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/L2ScoredButtonGroup"
+            app:layout_constraintBottom_toBottomOf="@id/rg_l2_scored"
             app:layout_constraintStart_toStartOf="@+id/tv_l3_scored"
-            app:layout_constraintTop_toTopOf="@id/L2ScoredButtonGroup" />
+            app:layout_constraintTop_toTopOf="@id/rg_l2_scored" />
 
         <TextView
-            android:id="@+id/L2ScoredCounter"
+            android:id="@+id/tv_l2_scored_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -751,25 +751,25 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L2ScoredButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/L2ScoredButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/L2ScoredButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l2_scored"
+            app:layout_constraintStart_toEndOf="@+id/rg_l2_scored"
+            app:layout_constraintTop_toTopOf="@+id/rg_l2_scored" />
 
         <TextView
-            android:id="@+id/IDL2Missed"
+            android:id="@+id/tv_l2_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:text="@string/Missed"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/L2MissedButtonGroup"
-            app:layout_constraintEnd_toEndOf="@+id/IDL2Scored"
-            app:layout_constraintStart_toStartOf="@+id/IDL2Scored"
-            app:layout_constraintTop_toTopOf="@+id/L2MissedButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@id/rg_l2_missed"
+            app:layout_constraintEnd_toEndOf="@+id/tv_l2_scored"
+            app:layout_constraintStart_toStartOf="@+id/tv_l2_scored"
+            app:layout_constraintTop_toTopOf="@+id/rg_l2_missed" />
 
         <TextView
-            android:id="@+id/L2MissedCounter"
+            android:id="@+id/tv_l2_missed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -781,12 +781,12 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L2MissedButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/L2MissedButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/L2MissedButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l2_missed"
+            app:layout_constraintStart_toEndOf="@+id/rg_l2_missed"
+            app:layout_constraintTop_toTopOf="@+id/rg_l2_missed" />
 
         <RadioGroup
-            android:id="@+id/L1ScoredButtonGroup"
+            android:id="@+id/rg_l1_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -794,11 +794,11 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toEndOf="@+id/IDL1Scored"
-            app:layout_constraintTop_toBottomOf="@+id/L2MissedButtonGroup">
+            app:layout_constraintStart_toEndOf="@+id/tv_l1_scored"
+            app:layout_constraintTop_toBottomOf="@+id/rg_l2_missed">
 
             <ImageButton
-                android:id="@+id/notScoredL1Button"
+                android:id="@+id/btn_l1_minus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -809,7 +809,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/scoredL1Button"
+                android:id="@+id/btn_l1_plus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -821,18 +821,18 @@
         </RadioGroup>
 
         <RadioGroup
-            android:id="@+id/L1MissedButtonGroup"
+            android:id="@+id/rg_l1_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintStart_toStartOf="@+id/L1ScoredButtonGroup"
-            app:layout_constraintTop_toBottomOf="@+id/L1ScoredButtonGroup">
+            app:layout_constraintStart_toStartOf="@+id/rg_l1_scored"
+            app:layout_constraintTop_toBottomOf="@+id/rg_l1_scored">
 
             <ImageButton
-                android:id="@+id/notMissedL1Button"
+                android:id="@+id/btn_l1_minus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -843,7 +843,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/missedL1Button"
+                android:id="@+id/btn_l1_plus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -855,19 +855,19 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/IDL1Scored"
+            android:id="@+id/tv_l1_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:text="@string/Scored"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/L1ScoredButtonGroup"
-            app:layout_constraintStart_toStartOf="@+id/IDL2Scored"
-            app:layout_constraintTop_toTopOf="@id/L1ScoredButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@id/rg_l1_scored"
+            app:layout_constraintStart_toStartOf="@+id/tv_l2_scored"
+            app:layout_constraintTop_toTopOf="@id/rg_l1_scored" />
 
         <TextView
-            android:id="@+id/L1ScoredCounter"
+            android:id="@+id/tv_l1_scored_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -879,25 +879,25 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L1ScoredButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/L1ScoredButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/L1ScoredButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l1_scored"
+            app:layout_constraintStart_toEndOf="@+id/rg_l1_scored"
+            app:layout_constraintTop_toTopOf="@+id/rg_l1_scored" />
 
         <TextView
-            android:id="@+id/IDL1Missed"
+            android:id="@+id/tv_l1_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:text="@string/Missed"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/L1MissedButtonGroup"
-            app:layout_constraintEnd_toEndOf="@+id/IDL1Scored"
-            app:layout_constraintStart_toStartOf="@+id/IDL1Scored"
-            app:layout_constraintTop_toTopOf="@+id/L1MissedButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@id/rg_l1_missed"
+            app:layout_constraintEnd_toEndOf="@+id/tv_l1_scored"
+            app:layout_constraintStart_toStartOf="@+id/tv_l1_scored"
+            app:layout_constraintTop_toTopOf="@+id/rg_l1_missed" />
 
         <TextView
-            android:id="@+id/L1MissedCounter"
+            android:id="@+id/tv_l1_missed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -909,9 +909,9 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/L1MissedButtonGroup"
-            app:layout_constraintStart_toEndOf="@+id/L1MissedButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/L1MissedButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_l1_missed"
+            app:layout_constraintStart_toEndOf="@+id/rg_l1_missed"
+            app:layout_constraintTop_toTopOf="@+id/rg_l1_missed" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

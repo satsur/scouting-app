@@ -163,47 +163,47 @@ public class Auton extends Fragment implements UpdateListener {
             reefID = getView().findViewById(R.id.tv_reef);
             L4ReefID = getView().findViewById(R.id.tv_l4_coral);
             L3ReefID = getView().findViewById(R.id.tv_l3_coral);
-            L2ReefID = getView().findViewById(R.id.IDL2Coral);
-            L1ReefID = getView().findViewById(R.id.IDL1Coral);
+            L2ReefID = getView().findViewById(R.id.tv_l2_coral);
+            L1ReefID = getView().findViewById(R.id.tv_l1_coral);
 
             scoredL4ID = getView().findViewById(R.id.tv_l4_scored);
             scoredL3ID = getView().findViewById(R.id.tv_l3_scored);
-            scoredL2ID = getView().findViewById(R.id.IDL2Scored);
-            scoredL1ID = getView().findViewById(R.id.IDL1Scored);
+            scoredL2ID = getView().findViewById(R.id.tv_l2_scored);
+            scoredL1ID = getView().findViewById(R.id.tv_l1_scored);
 
             missedL4ID = getView().findViewById(R.id.tv_l4_missed);
             missedL3ID = getView().findViewById(R.id.tv_l3_missed);
-            missedL2ID = getView().findViewById(R.id.IDL2Missed);
-            missedL1ID = getView().findViewById(R.id.IDL1Missed);
+            missedL2ID = getView().findViewById(R.id.tv_l2_missed);
+            missedL1ID = getView().findViewById(R.id.tv_l1_missed);
 
-            scoredL4Button = getView().findViewById(R.id.scoredL4Button);
-            notScoredL4Button = getView().findViewById(R.id.notScoredL4Button);
-            missedL4Button = getView().findViewById(R.id.missedL4Button);
-            notMissedL4Button = getView().findViewById(R.id.notMissedL4Button);
+            scoredL4Button = getView().findViewById(R.id.btn_l4_plus_scored);
+            notScoredL4Button = getView().findViewById(R.id.btn_l4_minus_scored);
+            missedL4Button = getView().findViewById(R.id.btn_l4_plus_missed);
+            notMissedL4Button = getView().findViewById(R.id.btn_l4_minus_missed);
 
-            scoredL3Button = getView().findViewById(R.id.scoredL3Button);
-            notScoredL3Button = getView().findViewById(R.id.notScoredL3Button);
-            missedL3Button = getView().findViewById(R.id.missedL3Button);
-            notMissedL3Button = getView().findViewById(R.id.notMissedL3Button);
+            scoredL3Button = getView().findViewById(R.id.btn_l3_plus_scored);
+            notScoredL3Button = getView().findViewById(R.id.btn_l3_minus_scored);
+            missedL3Button = getView().findViewById(R.id.btn_l3_plus_missed);
+            notMissedL3Button = getView().findViewById(R.id.btn_l3_minus_missed);
 
-            scoredL2Button = getView().findViewById(R.id.scoredL2Button);
-            notScoredL2Button = getView().findViewById(R.id.notScoredL2Button);
-            missedL2Button = getView().findViewById(R.id.missedL2Button);
-            notMissedL2Button = getView().findViewById(R.id.notMissedL2Button);
+            scoredL2Button = getView().findViewById(R.id.btn_l2_plus_scored);
+            notScoredL2Button = getView().findViewById(R.id.btn_l2_minus_scored);
+            missedL2Button = getView().findViewById(R.id.btn_l2_plus_missed);
+            notMissedL2Button = getView().findViewById(R.id.btn_l2_minus_missed);
 
-            scoredL1Button = getView().findViewById(R.id.scoredL1Button);
-            notScoredL1Button = getView().findViewById(R.id.notScoredL1Button);
-            missedL1Button = getView().findViewById(R.id.missedL1Button);
-            notMissedL1Button = getView().findViewById(R.id.notMissedL1Button);
+            scoredL1Button = getView().findViewById(R.id.btn_l1_plus_scored);
+            notScoredL1Button = getView().findViewById(R.id.btn_l1_minus_scored);
+            missedL1Button = getView().findViewById(R.id.btn_l1_plus_missed);
+            notMissedL1Button = getView().findViewById(R.id.btn_l1_minus_missed);
 
-            scoredL4Counter = getView().findViewById(R.id.L4ScoredCounter);
-            missedL4Counter = getView().findViewById(R.id.L4MissedCounter);
-            scoredL3Counter = getView().findViewById(R.id.L3ScoredCounter);
-            missedL3Counter = getView().findViewById(R.id.L3MissedCounter);
-            scoredL2Counter = getView().findViewById(R.id.L2ScoredCounter);
-            missedL2Counter = getView().findViewById(R.id.L2MissedCounter);
-            scoredL1Counter = getView().findViewById(R.id.L1ScoredCounter);
-            missedL1Counter = getView().findViewById(R.id.L1MissedCounter);
+            scoredL4Counter = getView().findViewById(R.id.tv_l4_scored_counter);
+            missedL4Counter = getView().findViewById(R.id.tv_l4_missed_counter);
+            scoredL3Counter = getView().findViewById(R.id.tv_l3_scored_counter);
+            missedL3Counter = getView().findViewById(R.id.tv_l3_missed_counter);
+            scoredL2Counter = getView().findViewById(R.id.tv_l2_scored_counter);
+            missedL2Counter = getView().findViewById(R.id.tv_l2_missed_counter);
+            scoredL1Counter = getView().findViewById(R.id.tv_l1_scored_counter);
+            missedL1Counter = getView().findViewById(R.id.tv_l1_missed_counter);
 
             algaeID = getView().findViewById(R.id.tv_algae_header);
             dealgaefyingID = getView().findViewById(R.id.tv_dealgaefying);
