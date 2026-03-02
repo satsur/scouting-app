@@ -925,7 +925,7 @@
         app:layout_constraintTop_toBottomOf="@+id/algaeLayout">
 
         <TextView
-            android:id="@+id/IDProcessor"
+            android:id="@+id/tv_processor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
@@ -945,11 +945,11 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintEnd_toStartOf="@+id/ProcessorScoredCounter"
-            app:layout_constraintTop_toBottomOf="@+id/IDProcessor">
+            app:layout_constraintEnd_toStartOf="@+id/btn_processor_scored_counter"
+            app:layout_constraintTop_toBottomOf="@+id/tv_processor">
 
             <ImageButton
-                android:id="@+id/notScoredProcessorButton"
+                android:id="@+id/btn_processor_minus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -960,7 +960,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/scoredProcessorButton"
+                android:id="@+id/btn_processor_plus_scored"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -983,7 +983,7 @@
             app:layout_constraintTop_toBottomOf="@+id/ProcessorScoredButtonGroup">
 
             <ImageButton
-                android:id="@+id/notMissedProcessorButton"
+                android:id="@+id/btn_processor_minus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -994,7 +994,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/missedProcessorButton"
+                android:id="@+id/btn_processor_plus_missed"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -1006,7 +1006,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/IDProcessorScored"
+            android:id="@+id/tv_processor_scored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -1020,7 +1020,7 @@
             app:layout_constraintVertical_bias="0.666" />
 
         <TextView
-            android:id="@+id/ProcessorScoredCounter"
+            android:id="@+id/btn_processor_scored_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -1036,7 +1036,7 @@
             app:layout_constraintTop_toTopOf="@+id/ProcessorScoredButtonGroup" />
 
         <TextView
-            android:id="@+id/IDProcessorMissed"
+            android:id="@+id/tv_processor_missed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
@@ -1044,11 +1044,11 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
             app:layout_constraintBottom_toBottomOf="@id/ProcessorMissedButtonGroup"
-            app:layout_constraintEnd_toEndOf="@+id/IDProcessorScored"
+            app:layout_constraintEnd_toEndOf="@+id/tv_processor_scored"
             app:layout_constraintTop_toTopOf="@+id/ProcessorMissedButtonGroup" />
 
         <TextView
-            android:id="@+id/ProcessorMissedCounter"
+            android:id="@+id/btn_processor_missed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -1060,7 +1060,7 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/ProcessorMissedButtonGroup"
-            app:layout_constraintEnd_toEndOf="@+id/ProcessorScoredCounter"
+            app:layout_constraintEnd_toEndOf="@+id/btn_processor_scored_counter"
             app:layout_constraintTop_toTopOf="@+id/ProcessorMissedButtonGroup" />
 
         <TextView

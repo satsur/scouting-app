@@ -233,15 +233,15 @@ public class Auton extends Fragment implements UpdateListener {
             removedL2Counter = getView().findViewById(R.id.tv_l2_removed_counter);
             attemptedL2Counter = getView().findViewById(R.id.tv_l2_attempted_counter);
 
-            processorID = getView().findViewById(R.id.IDProcessor);
-            scoredProcessorID = getView().findViewById(R.id.IDProcessorScored);
-            missedProcessorID = getView().findViewById(R.id.IDProcessorMissed);
-            scoredProcessorButton = getView().findViewById(R.id.scoredProcessorButton);
-            notScoredProcessorButton = getView().findViewById(R.id.notScoredProcessorButton);
-            missedProcessorButton = getView().findViewById(R.id.missedProcessorButton);
-            notMissedProcessorButton = getView().findViewById(R.id.notMissedProcessorButton);
-            scoredProcessorCounter = getView().findViewById(R.id.ProcessorScoredCounter);
-            missedProcessorCounter = getView().findViewById(R.id.ProcessorMissedCounter);
+            processorID = getView().findViewById(R.id.tv_processor);
+            scoredProcessorID = getView().findViewById(R.id.tv_processor_scored);
+            missedProcessorID = getView().findViewById(R.id.tv_processor_missed);
+            scoredProcessorButton = getView().findViewById(R.id.btn_processor_plus_scored);
+            notScoredProcessorButton = getView().findViewById(R.id.btn_processor_minus_scored);
+            missedProcessorButton = getView().findViewById(R.id.btn_processor_plus_missed);
+            notMissedProcessorButton = getView().findViewById(R.id.btn_processor_minus_missed);
+            scoredProcessorCounter = getView().findViewById(R.id.btn_processor_scored_counter);
+            missedProcessorCounter = getView().findViewById(R.id.btn_processor_missed_counter);
 
             netID = getView().findViewById(R.id.IDNet);
             scoredNetID = getView().findViewById(R.id.IDNetScored);
