@@ -154,9 +154,9 @@ public class Auton extends Fragment implements UpdateListener {
         super.onStart();
 
         //linking variables to XML elements on the screen
-        timerID = getView().findViewById(R.id.IDAutonSeconds1);
-        secondsRemaining = getView().findViewById(R.id.AutonSeconds);
-        teleopWarning = getView().findViewById(R.id.TeleopWarning);
+        timerID = getView().findViewById(R.id.tv_auton_seconds_remaining);
+        secondsRemaining = getView().findViewById(R.id.tv_auton_seconds_counter);
+        teleopWarning = getView().findViewById(R.id.tv_teleop_warning);
 
             scoringDirectionsID = getView().findViewById(R.id.tv_possession_directions);
             coralID = getView().findViewById(R.id.tv_coral_header);
@@ -265,18 +265,18 @@ public class Auton extends Fragment implements UpdateListener {
             notPickedUpAlgaeButton = getView().findViewById(R.id.btn_algae_minus_picked_up);
             pickedUpAlgaeCounter = getView().findViewById(R.id.algaePossessedCounter);
 
-            miscInstructionsID = getView().findViewById(R.id.IDMiscDirections);
-            leaveID = getView().findViewById(R.id.IDLeave);
-            fellOverID = getView().findViewById(R.id.IDFellOver);
-            leaveSwitch = getView().findViewById(R.id.LeaveSwitch);
-            fellOverSwitch = getView().findViewById(R.id.FellOverSwitch);
+            miscInstructionsID = getView().findViewById(R.id.tv_misc_directions);
+            leaveID = getView().findViewById(R.id.tv_leave);
+            fellOverID = getView().findViewById(R.id.tv_fell_over);
+            leaveSwitch = getView().findViewById(R.id.switch_leave);
+            fellOverSwitch = getView().findViewById(R.id.switch_fell_over);
 
         topEdgeBar = getView().findViewById(R.id.topEdgeBar);
         bottomEdgeBar = getView().findViewById(R.id.bottomEdgeBar);
         leftEdgeBar = getView().findViewById(R.id.leftEdgeBar);
         rightEdgeBar = getView().findViewById(R.id.rightEdgeBar);
 
-        nextButton = getView().findViewById(R.id.NextTeleopButton);
+        nextButton = getView().findViewById(R.id.btn_next_teleop);
 
         //get HashMap data (fill with defaults if empty or null)
         HashMapManager.checkNullOrEmpty(HashMapManager.HASH.SETUP);

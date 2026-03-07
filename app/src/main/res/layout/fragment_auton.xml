@@ -1409,7 +1409,7 @@
         app:layout_constraintStart_toStartOf="@+id/leftEdgeBar" />
 
     <TextView
-        android:id="@+id/IDAutonSeconds1"
+        android:id="@+id/tv_auton_seconds_remaining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -1419,7 +1419,7 @@
         android:text="@string/AutonSeconds"
         android:textColor="@color/sky"
         android:textSize="@dimen/instruction_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/NextTeleopButton"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next_teleop"
         app:layout_constraintEnd_toStartOf="@+id/rightEdgeBar"
         app:layout_constraintStart_toEndOf="@+id/leftEdgeBar" />
 
@@ -1437,7 +1437,7 @@
         app:layout_constraintTop_toBottomOf="@+id/topEdgeBar" />
 
     <TextView
-        android:id="@+id/AutonSeconds"
+        android:id="@+id/tv_auton_seconds_counter"
         android:layout_width="35dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -1445,12 +1445,12 @@
         android:text="@string/DefaultValue"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/instruction_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/IDAutonSeconds1"
-        app:layout_constraintStart_toEndOf="@+id/IDAutonSeconds1"
-        app:layout_constraintTop_toTopOf="@+id/IDAutonSeconds1" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_auton_seconds_remaining"
+        app:layout_constraintStart_toEndOf="@+id/tv_auton_seconds_remaining"
+        app:layout_constraintTop_toTopOf="@+id/tv_auton_seconds_remaining" />
 
     <TextView
-        android:id="@+id/IDMiscDirections"
+        android:id="@+id/tv_misc_directions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -1462,7 +1462,7 @@
         app:layout_constraintTop_toBottomOf="@+id/coralPossessionLayout" />
 
     <TextView
-        android:id="@+id/TeleopWarning"
+        android:id="@+id/tv_teleop_warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/teleop_warning"
@@ -1477,7 +1477,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_possession_directions" />
 
     <TextView
-        android:id="@+id/IDLeave"
+        android:id="@+id/tv_leave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -1485,12 +1485,12 @@
         android:text="@string/Leave"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/LeaveSwitch"
-        app:layout_constraintStart_toEndOf="@+id/LeaveSwitch"
-        app:layout_constraintTop_toTopOf="@+id/LeaveSwitch" />
+        app:layout_constraintBottom_toBottomOf="@+id/switch_leave"
+        app:layout_constraintStart_toEndOf="@+id/switch_leave"
+        app:layout_constraintTop_toTopOf="@+id/switch_leave" />
 
     <Switch
-        android:id="@+id/LeaveSwitch"
+        android:id="@+id/switch_leave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -1498,11 +1498,11 @@
         android:layout_marginTop="10dp"
         android:thumb="@drawable/thumb_states"
         android:track="@drawable/track_states"
-        app:layout_constraintStart_toStartOf="@+id/IDMiscDirections"
-        app:layout_constraintTop_toBottomOf="@+id/IDMiscDirections" />
+        app:layout_constraintStart_toStartOf="@+id/tv_misc_directions"
+        app:layout_constraintTop_toBottomOf="@+id/tv_misc_directions" />
 
     <TextView
-        android:id="@+id/IDFellOver"
+        android:id="@+id/tv_fell_over"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -1510,12 +1510,12 @@
         android:text="@string/FellOver"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/input_label_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/FellOverSwitch"
-        app:layout_constraintStart_toEndOf="@+id/FellOverSwitch"
-        app:layout_constraintTop_toTopOf="@+id/FellOverSwitch" />
+        app:layout_constraintBottom_toBottomOf="@+id/switch_fell_over"
+        app:layout_constraintStart_toEndOf="@+id/switch_fell_over"
+        app:layout_constraintTop_toTopOf="@+id/switch_fell_over" />
 
     <Switch
-        android:id="@+id/FellOverSwitch"
+        android:id="@+id/switch_fell_over"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -1523,11 +1523,11 @@
         android:layout_marginTop="10dp"
         android:thumb="@drawable/thumb_states"
         android:track="@drawable/track_states"
-        app:layout_constraintStart_toStartOf="@+id/LeaveSwitch"
-        app:layout_constraintTop_toBottomOf="@+id/LeaveSwitch" />
+        app:layout_constraintStart_toStartOf="@+id/switch_leave"
+        app:layout_constraintTop_toBottomOf="@+id/switch_leave" />
 
     <Button
-        android:id="@+id/NextTeleopButton"
+        android:id="@+id/btn_next_teleop"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
