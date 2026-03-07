@@ -253,16 +253,16 @@ public class Auton extends Fragment implements UpdateListener {
             scoredNetCounter = getView().findViewById(R.id.tv_net_scored_counter);
             missedNetCounter = getView().findViewById(R.id.tv_net_missed_counter);
 
-            possessionCoralID = getView().findViewById(R.id.IDCoralPossession);
-            pickedUpCoralID = getView().findViewById(R.id.IDCoralPossessed);
-            pickedUpCoralButton = getView().findViewById(R.id.possessedCoralButton);
-            notPickedUpCoralButton = getView().findViewById(R.id.notPossessedCoralButton);
-            pickedUpCoralCounter = getView().findViewById(R.id.coralPossessedCounter);
+            possessionCoralID = getView().findViewById(R.id.tv_coral_possession);
+            pickedUpCoralID = getView().findViewById(R.id.tv_coral_picked_up);
+            pickedUpCoralButton = getView().findViewById(R.id.btn_coral_plus_picked_up);
+            notPickedUpCoralButton = getView().findViewById(R.id.btn_coral_minus_picked_up);
+            pickedUpCoralCounter = getView().findViewById(R.id.tv_coral_picked_up_counter);
 
-            possessionAlgaeID = getView().findViewById(R.id.IDAlgaePossession);
-            pickedUpAlgaeID = getView().findViewById(R.id.IDAlgaePossessed);
-            pickedUpAlgaeButton = getView().findViewById(R.id.possessedAlgaeButton);
-            notPickedUpAlgaeButton = getView().findViewById(R.id.notPossessedAlgaeButton);
+            possessionAlgaeID = getView().findViewById(R.id.tv_algae_possession);
+            pickedUpAlgaeID = getView().findViewById(R.id.tv_algae_picked_up);
+            pickedUpAlgaeButton = getView().findViewById(R.id.btn_algae_plus_picked_up);
+            notPickedUpAlgaeButton = getView().findViewById(R.id.btn_algae_minus_picked_up);
             pickedUpAlgaeCounter = getView().findViewById(R.id.algaePossessedCounter);
 
             miscInstructionsID = getView().findViewById(R.id.IDMiscDirections);

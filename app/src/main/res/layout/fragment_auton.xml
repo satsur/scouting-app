@@ -1211,7 +1211,7 @@
         app:layout_constraintTop_toTopOf="@+id/algaePossesssionLayout">
 
         <TextView
-            android:id="@+id/IDCoralPossession"
+            android:id="@+id/tv_coral_possession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
@@ -1223,7 +1223,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/IDCoralPossessed"
+            android:id="@+id/tv_coral_picked_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -1231,12 +1231,12 @@
             android:text="@string/PickedUp"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/CoralPossessedButtonGroup"
-            app:layout_constraintEnd_toStartOf="@+id/CoralPossessedButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/CoralPossessedButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_coral_picked_up"
+            app:layout_constraintEnd_toStartOf="@+id/rg_coral_picked_up"
+            app:layout_constraintTop_toTopOf="@+id/rg_coral_picked_up" />
 
         <RadioGroup
-            android:id="@+id/CoralPossessedButtonGroup"
+            android:id="@+id/rg_coral_picked_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -1244,11 +1244,11 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintEnd_toStartOf="@+id/coralPossessedCounter"
-            app:layout_constraintTop_toBottomOf="@+id/IDCoralPossession">
+            app:layout_constraintEnd_toStartOf="@+id/tv_coral_picked_up_counter"
+            app:layout_constraintTop_toBottomOf="@+id/tv_coral_possession">
 
             <ImageButton
-                android:id="@+id/notPossessedCoralButton"
+                android:id="@+id/btn_coral_minus_picked_up"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -1259,7 +1259,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/possessedCoralButton"
+                android:id="@+id/btn_coral_plus_picked_up"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -1272,7 +1272,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/coralPossessedCounter"
+            android:id="@+id/tv_coral_picked_up_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -1283,9 +1283,9 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/CoralPossessedButtonGroup"
+            app:layout_constraintBottom_toBottomOf="@+id/rg_coral_picked_up"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/CoralPossessedButtonGroup" />
+            app:layout_constraintTop_toTopOf="@+id/rg_coral_picked_up" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1298,7 +1298,7 @@
         app:layout_constraintTop_toBottomOf="@+id/processorNetLayout">
 
         <TextView
-            android:id="@+id/IDAlgaePossession"
+            android:id="@+id/tv_algae_possession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura_medium_condensed_bt"
@@ -1310,7 +1310,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/IDAlgaePossessed"
+            android:id="@+id/tv_algae_picked_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -1318,12 +1318,12 @@
             android:text="@string/PickedUp"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_label_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/AlgaePossessedButtonGroup"
-            app:layout_constraintEnd_toStartOf="@+id/AlgaePossessedButtonGroup"
-            app:layout_constraintTop_toTopOf="@+id/AlgaePossessedButtonGroup" />
+            app:layout_constraintBottom_toBottomOf="@+id/rg_algae_picked_up"
+            app:layout_constraintEnd_toStartOf="@+id/rg_algae_picked_up"
+            app:layout_constraintTop_toTopOf="@+id/rg_algae_picked_up" />
 
         <RadioGroup
-            android:id="@+id/AlgaePossessedButtonGroup"
+            android:id="@+id/rg_algae_picked_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -1332,10 +1332,10 @@
             android:orientation="horizontal"
             android:showDividers="middle"
             app:layout_constraintEnd_toStartOf="@+id/algaePossessedCounter"
-            app:layout_constraintTop_toBottomOf="@+id/IDAlgaePossession">
+            app:layout_constraintTop_toBottomOf="@+id/tv_algae_possession">
 
             <ImageButton
-                android:id="@+id/notPossessedAlgaeButton"
+                android:id="@+id/btn_algae_minus_picked_up"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="wrap_content"
                 android:background="@drawable/toggle_left_states"
@@ -1346,7 +1346,7 @@
                 tools:ignore="ContentDescription" />
 
             <ImageButton
-                android:id="@+id/possessedAlgaeButton"
+                android:id="@+id/btn_algae_plus_picked_up"
                 android:layout_width="@dimen/square_toggle_length"
                 android:layout_height="@dimen/square_toggle_length"
                 android:layout_weight="1"
@@ -1370,9 +1370,9 @@
             android:text="@string/DefaultValue"
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/AlgaePossessedButtonGroup"
+            app:layout_constraintBottom_toBottomOf="@+id/rg_algae_picked_up"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/AlgaePossessedButtonGroup"
+            app:layout_constraintTop_toTopOf="@+id/rg_algae_picked_up"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
