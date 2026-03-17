@@ -945,7 +945,7 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintEnd_toStartOf="@+id/btn_processor_scored_counter"
+            app:layout_constraintEnd_toStartOf="@+id/tv_processor_scored_counter"
             app:layout_constraintTop_toBottomOf="@+id/tv_processor">
 
             <ImageButton
@@ -1020,7 +1020,7 @@
             app:layout_constraintVertical_bias="0.666" />
 
         <TextView
-            android:id="@+id/btn_processor_scored_counter"
+            android:id="@+id/tv_processor_scored_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -1048,7 +1048,7 @@
             app:layout_constraintTop_toTopOf="@+id/ProcessorMissedButtonGroup" />
 
         <TextView
-            android:id="@+id/btn_processor_missed_counter"
+            android:id="@+id/tv_processor_missed_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -1060,7 +1060,7 @@
             android:textColor="@drawable/text_states"
             android:textSize="@dimen/counter_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/ProcessorMissedButtonGroup"
-            app:layout_constraintEnd_toEndOf="@+id/btn_processor_scored_counter"
+            app:layout_constraintEnd_toEndOf="@+id/tv_processor_scored_counter"
             app:layout_constraintTop_toTopOf="@+id/ProcessorMissedButtonGroup" />
 
         <TextView
@@ -1331,7 +1331,7 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            app:layout_constraintEnd_toStartOf="@+id/algaePossessedCounter"
+            app:layout_constraintEnd_toStartOf="@+id/tv_algae_picked_up_counter"
             app:layout_constraintTop_toBottomOf="@+id/tv_algae_possession">
 
             <ImageButton
@@ -1359,7 +1359,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/algaePossessedCounter"
+            android:id="@+id/tv_algae_picked_up_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -1378,7 +1378,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/rightEdgeBar"
+        android:id="@+id/img_right_edge_bar"
         android:layout_width="5dp"
         android:layout_height="0dp"
         android:alpha="0"
@@ -1388,25 +1388,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/topEdgeBar"
+        android:id="@+id/img_top_edge_bar"
         android:layout_width="0dp"
         android:layout_height="5dp"
         android:alpha="0"
         android:background="@drawable/teleop_warning"
-        app:layout_constraintEnd_toStartOf="@id/rightEdgeBar"
-        app:layout_constraintStart_toEndOf="@id/leftEdgeBar"
+        app:layout_constraintEnd_toStartOf="@id/img_right_edge_bar"
+        app:layout_constraintStart_toEndOf="@id/img_left_edge_bar"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteY="15dp" />
 
     <ImageView
-        android:id="@+id/bottomEdgeBar"
+        android:id="@+id/img_bottom_edge_bar"
         android:layout_width="0dp"
         android:layout_height="5dp"
         android:alpha="0"
         android:background="@drawable/teleop_warning"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rightEdgeBar"
-        app:layout_constraintStart_toStartOf="@+id/leftEdgeBar" />
+        app:layout_constraintEnd_toEndOf="@+id/img_right_edge_bar"
+        app:layout_constraintStart_toStartOf="@+id/img_left_edge_bar" />
 
     <TextView
         android:id="@+id/tv_auton_seconds_remaining"
@@ -1420,8 +1420,8 @@
         android:textColor="@color/sky"
         android:textSize="@dimen/instruction_text_size"
         app:layout_constraintBottom_toTopOf="@+id/btn_next_teleop"
-        app:layout_constraintEnd_toStartOf="@+id/rightEdgeBar"
-        app:layout_constraintStart_toEndOf="@+id/leftEdgeBar" />
+        app:layout_constraintEnd_toStartOf="@+id/img_right_edge_bar"
+        app:layout_constraintStart_toEndOf="@+id/img_left_edge_bar" />
 
     <TextView
         android:id="@+id/tv_possession_directions"
@@ -1432,9 +1432,9 @@
         android:text="@string/PossessionDirections"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/instruction_text_size"
-        app:layout_constraintEnd_toStartOf="@+id/rightEdgeBar"
-        app:layout_constraintStart_toEndOf="@+id/leftEdgeBar"
-        app:layout_constraintTop_toBottomOf="@+id/topEdgeBar" />
+        app:layout_constraintEnd_toStartOf="@+id/img_right_edge_bar"
+        app:layout_constraintStart_toEndOf="@+id/img_left_edge_bar"
+        app:layout_constraintTop_toBottomOf="@+id/img_top_edge_bar" />
 
     <TextView
         android:id="@+id/tv_auton_seconds_counter"
@@ -1472,8 +1472,8 @@
         android:textColor="@color/bg_general"
         android:textSize="@dimen/input_label_text_size"
         android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/rightEdgeBar"
-        app:layout_constraintStart_toEndOf="@+id/leftEdgeBar"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_edge_bar"
+        app:layout_constraintStart_toEndOf="@+id/img_left_edge_bar"
         app:layout_constraintTop_toTopOf="@+id/tv_possession_directions" />
 
     <TextView
@@ -1540,13 +1540,13 @@
         android:text="@string/TeleopNext"
         android:textColor="@drawable/text_states"
         android:textSize="@dimen/button_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/bottomEdgeBar"
-        app:layout_constraintEnd_toStartOf="@+id/rightEdgeBar"
+        app:layout_constraintBottom_toTopOf="@+id/img_bottom_edge_bar"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_edge_bar"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/leftEdgeBar" />
+        app:layout_constraintStart_toEndOf="@+id/img_left_edge_bar" />
 
     <ImageView
-        android:id="@+id/leftEdgeBar"
+        android:id="@+id/img_left_edge_bar"
         android:layout_width="5dp"
         android:layout_height="0dp"
         android:alpha="0"

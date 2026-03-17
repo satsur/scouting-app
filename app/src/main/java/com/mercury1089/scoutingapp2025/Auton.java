@@ -31,95 +31,11 @@ import com.mercury1089.scoutingapp2025.listeners.UpdateListener;
 import com.mercury1089.scoutingapp2025.utils.GenUtils;
 
 public class Auton extends Fragment implements UpdateListener {
+    private FragmentAutonBinding binding;
+
     //HashMaps for sending QR data between screens
     private LinkedHashMap<String, String> setupHashMap;
     private LinkedHashMap<String, String> autonHashMap;
-
-    FragmentAutonBinding binding;
-
-    // Instructions
-    private TextView scoringDirectionsID;
-
-    // Coral Scoring - Reef
-    private TextView coralID;
-    private TextView reefID;
-    private TextView L4ReefID, L3ReefID, L2ReefID, L1ReefID;
-    private TextView scoredL4ID, missedL4ID;
-    private TextView scoredL3ID, missedL3ID;
-    private TextView scoredL2ID, missedL2ID;
-    private TextView scoredL1ID, missedL1ID;
-    private ImageButton scoredL4Button, notScoredL4Button;
-    private ImageButton missedL4Button, notMissedL4Button;
-    private ImageButton scoredL3Button, notScoredL3Button;
-    private ImageButton missedL3Button, notMissedL3Button;
-
-    private ImageButton scoredL2Button, notScoredL2Button;
-    private ImageButton missedL2Button, notMissedL2Button;
-
-    private ImageButton scoredL1Button, notScoredL1Button;
-    private ImageButton missedL1Button, notMissedL1Button;
-    private TextView scoredL4Counter, missedL4Counter;
-    private TextView scoredL3Counter, missedL3Counter;
-    private TextView scoredL2Counter, missedL2Counter;
-    private TextView scoredL1Counter, missedL1Counter;
-
-    // Algae Scoring - Reef Dealgaefying
-    private TextView algaeID;
-    private TextView dealgaefyingID;
-    private TextView L3AlgaeID, L2AlgaeID;
-    private TextView removedL3ID, attemptedL3ID;
-    private TextView removedL2ID, attemptedL2ID;
-    private ImageButton removedL3Button, notRemovedL3Button;
-    private ImageButton attemptedL3Button, notAttemptedL3Button;
-    private ImageButton removedL2Button, notRemovedL2Button;
-    private ImageButton attemptedL2Button, notAttemptedL2Button;
-    private TextView removedL3Counter, attemptedL3Counter;
-    private TextView removedL2Counter, attemptedL2Counter;
-
-    // Algae - Processor
-    private TextView processorID;
-    private TextView scoredProcessorID, missedProcessorID;
-    private ImageButton scoredProcessorButton, notScoredProcessorButton;
-    private ImageButton missedProcessorButton, notMissedProcessorButton;
-    private TextView scoredProcessorCounter, missedProcessorCounter;
-
-    // Algae - Net
-    private TextView netID;
-    private TextView scoredNetID, missedNetID;
-    private ImageButton scoredNetButton, notScoredNetButton;
-    private ImageButton missedNetButton, notMissedNetButton;
-    private TextView scoredNetCounter, missedNetCounter;
-
-    // Possession
-    private TextView possessionCoralID, possessionAlgaeID;
-    private TextView pickedUpCoralID;
-    private ImageButton pickedUpCoralButton, notPickedUpCoralButton;
-    private TextView pickedUpCoralCounter;
-    private TextView pickedUpAlgaeID;
-    private ImageButton pickedUpAlgaeButton, notPickedUpAlgaeButton;
-    private TextView pickedUpAlgaeCounter;
-
-    // Robot toggle options
-    private TextView miscInstructionsID;
-    private TextView leaveID, fellOverID;
-    private Switch leaveSwitch;
-    private Switch fellOverSwitch;
-
-    // Next button
-    private Button nextButton;
-
-    // Auton timer views
-    private TextView timerID;
-    private TextView secondsRemaining;
-    private TextView teleopWarning;
-
-    // Auton border image views
-    private ImageView topEdgeBar;
-    private ImageView bottomEdgeBar;
-    private ImageView leftEdgeBar;
-    private ImageView rightEdgeBar;
-
-    // other variables
     private static CountDownTimer timer;
     private boolean firstTime = true;
     private boolean running = true;
@@ -139,6 +55,8 @@ public class Auton extends Fragment implements UpdateListener {
     MatchActivity context;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = FragmentAutonBinding.inflate(inflater, container, false);
+
         context = (MatchActivity) getActivity();
         View inflated = null;
         try {
@@ -152,131 +70,6 @@ public class Auton extends Fragment implements UpdateListener {
 
     public void onStart(){
         super.onStart();
-
-        //linking variables to XML elements on the screen
-        timerID = getView().findViewById(R.id.tv_auton_seconds_remaining);
-        secondsRemaining = getView().findViewById(R.id.tv_auton_seconds_counter);
-        teleopWarning = getView().findViewById(R.id.tv_teleop_warning);
-
-            scoringDirectionsID = getView().findViewById(R.id.tv_possession_directions);
-            coralID = getView().findViewById(R.id.tv_coral_header);
-            reefID = getView().findViewById(R.id.tv_reef);
-            L4ReefID = getView().findViewById(R.id.tv_l4_coral);
-            L3ReefID = getView().findViewById(R.id.tv_l3_coral);
-            L2ReefID = getView().findViewById(R.id.tv_l2_coral);
-            L1ReefID = getView().findViewById(R.id.tv_l1_coral);
-
-            scoredL4ID = getView().findViewById(R.id.tv_l4_scored);
-            scoredL3ID = getView().findViewById(R.id.tv_l3_scored);
-            scoredL2ID = getView().findViewById(R.id.tv_l2_scored);
-            scoredL1ID = getView().findViewById(R.id.tv_l1_scored);
-
-            missedL4ID = getView().findViewById(R.id.tv_l4_missed);
-            missedL3ID = getView().findViewById(R.id.tv_l3_missed);
-            missedL2ID = getView().findViewById(R.id.tv_l2_missed);
-            missedL1ID = getView().findViewById(R.id.tv_l1_missed);
-
-            scoredL4Button = getView().findViewById(R.id.btn_l4_plus_scored);
-            notScoredL4Button = getView().findViewById(R.id.btn_l4_minus_scored);
-            missedL4Button = getView().findViewById(R.id.btn_l4_plus_missed);
-            notMissedL4Button = getView().findViewById(R.id.btn_l4_minus_missed);
-
-            scoredL3Button = getView().findViewById(R.id.btn_l3_plus_scored);
-            notScoredL3Button = getView().findViewById(R.id.btn_l3_minus_scored);
-            missedL3Button = getView().findViewById(R.id.btn_l3_plus_missed);
-            notMissedL3Button = getView().findViewById(R.id.btn_l3_minus_missed);
-
-            scoredL2Button = getView().findViewById(R.id.btn_l2_plus_scored);
-            notScoredL2Button = getView().findViewById(R.id.btn_l2_minus_scored);
-            missedL2Button = getView().findViewById(R.id.btn_l2_plus_missed);
-            notMissedL2Button = getView().findViewById(R.id.btn_l2_minus_missed);
-
-            scoredL1Button = getView().findViewById(R.id.btn_l1_plus_scored);
-            notScoredL1Button = getView().findViewById(R.id.btn_l1_minus_scored);
-            missedL1Button = getView().findViewById(R.id.btn_l1_plus_missed);
-            notMissedL1Button = getView().findViewById(R.id.btn_l1_minus_missed);
-
-            scoredL4Counter = getView().findViewById(R.id.tv_l4_scored_counter);
-            missedL4Counter = getView().findViewById(R.id.tv_l4_missed_counter);
-            scoredL3Counter = getView().findViewById(R.id.tv_l3_scored_counter);
-            missedL3Counter = getView().findViewById(R.id.tv_l3_missed_counter);
-            scoredL2Counter = getView().findViewById(R.id.tv_l2_scored_counter);
-            missedL2Counter = getView().findViewById(R.id.tv_l2_missed_counter);
-            scoredL1Counter = getView().findViewById(R.id.tv_l1_scored_counter);
-            missedL1Counter = getView().findViewById(R.id.tv_l1_missed_counter);
-
-            algaeID = getView().findViewById(R.id.tv_algae_header);
-            dealgaefyingID = getView().findViewById(R.id.tv_dealgaefying);
-            L3AlgaeID = getView().findViewById(R.id.tv_l3_algae);
-            L2AlgaeID = getView().findViewById(R.id.tv_l2_algae);
-
-            L3AlgaeID = getView().findViewById(R.id.tv_l3_algae);
-            L2AlgaeID = getView().findViewById(R.id.tv_l2_algae);
-
-            removedL3ID = getView().findViewById(R.id.tv_l3_removed);
-            attemptedL3ID = getView().findViewById(R.id.tv_l3_attempted);
-            removedL2ID = getView().findViewById(R.id.tv_l2_removed);
-            attemptedL2ID = getView().findViewById(R.id.tv_l2_attempted);
-
-            removedL3Button = getView().findViewById(R.id.btn_l3_plus_removed);
-            notRemovedL3Button = getView().findViewById(R.id.btn_l3_minus_removed);
-            attemptedL3Button = getView().findViewById(R.id.btn_l3_plus_attempted);
-            notAttemptedL3Button = getView().findViewById(R.id.btn_l3_minus_attempted);
-
-            removedL2Button = getView().findViewById(R.id.btn_l2_plus_removed);
-            notRemovedL2Button = getView().findViewById(R.id.btn_l2_minus_removed);
-            attemptedL2Button = getView().findViewById(R.id.btn_l2_plus_attempted);
-            notAttemptedL2Button = getView().findViewById(R.id.btn_l2_minus_attempted);
-
-            removedL3Counter = getView().findViewById(R.id.tv_l3_removed_counter);
-            attemptedL3Counter = getView().findViewById(R.id.tv_l3_attempted_counter);
-            removedL2Counter = getView().findViewById(R.id.tv_l2_removed_counter);
-            attemptedL2Counter = getView().findViewById(R.id.tv_l2_attempted_counter);
-
-            processorID = getView().findViewById(R.id.tv_processor);
-            scoredProcessorID = getView().findViewById(R.id.tv_processor_scored);
-            missedProcessorID = getView().findViewById(R.id.tv_processor_missed);
-            scoredProcessorButton = getView().findViewById(R.id.btn_processor_plus_scored);
-            notScoredProcessorButton = getView().findViewById(R.id.btn_processor_minus_scored);
-            missedProcessorButton = getView().findViewById(R.id.btn_processor_plus_missed);
-            notMissedProcessorButton = getView().findViewById(R.id.btn_processor_minus_missed);
-            scoredProcessorCounter = getView().findViewById(R.id.btn_processor_scored_counter);
-            missedProcessorCounter = getView().findViewById(R.id.btn_processor_missed_counter);
-
-            netID = getView().findViewById(R.id.tv_net);
-            scoredNetID = getView().findViewById(R.id.tv_net_scored);
-            missedNetID = getView().findViewById(R.id.tv_net_missed);
-            scoredNetButton = getView().findViewById(R.id.btn_net_plus_scored);
-            notScoredNetButton = getView().findViewById(R.id.btn_net_minus_scored);
-            missedNetButton = getView().findViewById(R.id.btn_net_plus_missed);
-            notMissedNetButton = getView().findViewById(R.id.btn_net_minus_missed);
-            scoredNetCounter = getView().findViewById(R.id.tv_net_scored_counter);
-            missedNetCounter = getView().findViewById(R.id.tv_net_missed_counter);
-
-            possessionCoralID = getView().findViewById(R.id.tv_coral_possession);
-            pickedUpCoralID = getView().findViewById(R.id.tv_coral_picked_up);
-            pickedUpCoralButton = getView().findViewById(R.id.btn_coral_plus_picked_up);
-            notPickedUpCoralButton = getView().findViewById(R.id.btn_coral_minus_picked_up);
-            pickedUpCoralCounter = getView().findViewById(R.id.tv_coral_picked_up_counter);
-
-            possessionAlgaeID = getView().findViewById(R.id.tv_algae_possession);
-            pickedUpAlgaeID = getView().findViewById(R.id.tv_algae_picked_up);
-            pickedUpAlgaeButton = getView().findViewById(R.id.btn_algae_plus_picked_up);
-            notPickedUpAlgaeButton = getView().findViewById(R.id.btn_algae_minus_picked_up);
-            pickedUpAlgaeCounter = getView().findViewById(R.id.algaePossessedCounter);
-
-            miscInstructionsID = getView().findViewById(R.id.tv_misc_directions);
-            leaveID = getView().findViewById(R.id.tv_leave);
-            fellOverID = getView().findViewById(R.id.tv_fell_over);
-            leaveSwitch = getView().findViewById(R.id.switch_leave);
-            fellOverSwitch = getView().findViewById(R.id.switch_fell_over);
-
-        topEdgeBar = getView().findViewById(R.id.topEdgeBar);
-        bottomEdgeBar = getView().findViewById(R.id.bottomEdgeBar);
-        leftEdgeBar = getView().findViewById(R.id.leftEdgeBar);
-        rightEdgeBar = getView().findViewById(R.id.rightEdgeBar);
-
-        nextButton = getView().findViewById(R.id.btn_next_teleop);
 
         //get HashMap data (fill with defaults if empty or null)
         HashMapManager.checkNullOrEmpty(HashMapManager.HASH.SETUP);
@@ -292,22 +85,22 @@ public class Auton extends Fragment implements UpdateListener {
         timer = new CountDownTimer(15000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                secondsRemaining.setText(GenUtils.padLeftZeros("" + millisUntilFinished / 1000, 2));
+                binding.tvAutonSecondsCounter.setText(GenUtils.padLeftZeros("" + millisUntilFinished / 1000, 2));
 
                 if(!running)
                     return;
 
                 if (millisUntilFinished / 1000 <= 3 && millisUntilFinished / 1000 > 0) {  //play the blinking animation
-                    teleopWarning.setVisibility(View.VISIBLE);
-                    timerID.setTextColor(context.getResources().getColor(R.color.banana));
-                    timerID.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.timer_yellow, 0, 0, 0);
+                    binding.tvTeleopWarning.setVisibility(View.VISIBLE);
+                    binding.tvAutonSecondsRemaining.setTextColor(context.getResources().getColor(R.color.banana));
+                    binding.tvAutonSecondsRemaining.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.timer_yellow, 0, 0, 0);
 
                     vibrator.vibrate(500);
 
-                    ObjectAnimator topEdgeLighter = ObjectAnimator.ofFloat(topEdgeBar, View.ALPHA, 0.0f, 1.0f);
-                    ObjectAnimator bottomEdgeLighter = ObjectAnimator.ofFloat(bottomEdgeBar, View.ALPHA, 0.0f, 1.0f);
-                    ObjectAnimator rightEdgeLighter = ObjectAnimator.ofFloat(rightEdgeBar, View.ALPHA, 0.0f, 1.0f);
-                    ObjectAnimator leftEdgeLighter = ObjectAnimator.ofFloat(leftEdgeBar, View.ALPHA, 0.0f, 1.0f);
+                    ObjectAnimator topEdgeLighter = ObjectAnimator.ofFloat(binding.imgTopEdgeBar, View.ALPHA, 0.0f, 1.0f);
+                    ObjectAnimator bottomEdgeLighter = ObjectAnimator.ofFloat(binding.imgBottomEdgeBar, View.ALPHA, 0.0f, 1.0f);
+                    ObjectAnimator rightEdgeLighter = ObjectAnimator.ofFloat(binding.imgRightEdgeBar, View.ALPHA, 0.0f, 1.0f);
+                    ObjectAnimator leftEdgeLighter = ObjectAnimator.ofFloat(binding.imgLeftEdgeBar, View.ALPHA, 0.0f, 1.0f);
 
                     topEdgeLighter.setDuration(500);
                     bottomEdgeLighter.setDuration(500);
@@ -332,43 +125,43 @@ public class Auton extends Fragment implements UpdateListener {
 
             public void onFinish() { //sets the label to display a teleop error background and text
                 if(running) {
-                    secondsRemaining.setText("00");
-                    topEdgeBar.setBackground(getResources().getDrawable(R.drawable.teleop_error));
-                    bottomEdgeBar.setBackground(getResources().getDrawable(R.drawable.teleop_error));
-                    leftEdgeBar.setBackground(getResources().getDrawable(R.drawable.teleop_error));
-                    rightEdgeBar.setBackground(getResources().getDrawable(R.drawable.teleop_error));
-                    timerID.setTextColor(context.getResources().getColor(R.color.border_warning));
-                    timerID.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.timer_red, 0, 0, 0);
-                    teleopWarning.setTextColor(getResources().getColor(R.color.white));
-                    teleopWarning.setBackground(getResources().getDrawable(R.drawable.teleop_error));
-                    teleopWarning.setText(getResources().getString(R.string.TeleopError));
+                    binding.tvAutonSecondsCounter.setText("00");
+                    binding.imgTopEdgeBar.setBackground(getResources().getDrawable(R.drawable.teleop_error));
+                    binding.imgBottomEdgeBar.setBackground(getResources().getDrawable(R.drawable.teleop_error));
+                    binding.imgLeftEdgeBar.setBackground(getResources().getDrawable(R.drawable.teleop_error));
+                    binding.imgRightEdgeBar.setBackground(getResources().getDrawable(R.drawable.teleop_error));
+                    binding.tvAutonSecondsRemaining.setTextColor(context.getResources().getColor(R.color.border_warning));
+                    binding.tvAutonSecondsRemaining.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.timer_red, 0, 0, 0);
+                    binding.tvTeleopWarning.setTextColor(getResources().getColor(R.color.white));
+                    binding.tvTeleopWarning.setBackground(getResources().getDrawable(R.drawable.teleop_error));
+                    binding.tvTeleopWarning.setText(getResources().getString(R.string.TeleopError));
 
-                    ObjectAnimator topEdgeLighter = ObjectAnimator.ofFloat(topEdgeBar, View.ALPHA, 0.0f, 1.0f);
-                    ObjectAnimator bottomEdgeLighter = ObjectAnimator.ofFloat(bottomEdgeBar, View.ALPHA, 0.0f, 1.0f);
-                    ObjectAnimator rightEdgeLighter = ObjectAnimator.ofFloat(rightEdgeBar, View.ALPHA, 0.0f, 1.0f);
-                    ObjectAnimator leftEdgeLighter = ObjectAnimator.ofFloat(leftEdgeBar, View.ALPHA, 0.0f, 1.0f);
+                    ObjectAnimator topEdgeLighter = ObjectAnimator.ofFloat(binding.imgTopEdgeBar, View.ALPHA, 0.0f, 1.0f);
+                    ObjectAnimator bottomEdgeLighter = ObjectAnimator.ofFloat(binding.imgBottomEdgeBar, View.ALPHA, 0.0f, 1.0f);
+                    ObjectAnimator rightEdgeLighter = ObjectAnimator.ofFloat(binding.imgRightEdgeBar, View.ALPHA, 0.0f, 1.0f);
+                    ObjectAnimator leftEdgeLighter = ObjectAnimator.ofFloat(binding.imgLeftEdgeBar, View.ALPHA, 0.0f, 1.0f);
 
                     int currentButtonColor = GenUtils.getAColor(context, R.color.melon);
-                    if(!nextButton.isEnabled())
+                    if(!binding.btnNextTeleop.isEnabled())
                         currentButtonColor = GenUtils.getAColor(context, R.color.night);
 
                     ValueAnimator teleopButtonAnim = ValueAnimator.ofArgb(currentButtonColor, GenUtils.getAColor(context, R.color.fire));
                     teleopButtonAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animation) {
-                            nextButton.setBackgroundColor((Integer)animation.getAnimatedValue());
+                            binding.btnNextTeleop.setBackgroundColor((Integer)animation.getAnimatedValue());
                         }
                     });
 
                     int currentArrowColor = GenUtils.getAColor(context, R.color.ice);
-                    if(!nextButton.isEnabled())
+                    if(!binding.btnNextTeleop.isEnabled())
                         currentArrowColor = GenUtils.getAColor(context, R.color.ocean);
 
                     ValueAnimator teleopArrowAnim = ValueAnimator.ofArgb(currentArrowColor, GenUtils.getAColor(context, R.color.ice));
                     teleopArrowAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animation) {
-                            nextButton.getCompoundDrawablesRelative()[2].setColorFilter((Integer)animation.getAnimatedValue(), PorterDuff.Mode.SRC_IN);
+                            binding.btnNextTeleop.getCompoundDrawablesRelative()[2].setColorFilter((Integer)animation.getAnimatedValue(), PorterDuff.Mode.SRC_IN);
                         }
                     });
 
@@ -376,16 +169,16 @@ public class Auton extends Fragment implements UpdateListener {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
-                            nextButton.getCompoundDrawablesRelative()[2].clearColorFilter();
-                            nextButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.right,0);
+                            binding.btnNextTeleop.getCompoundDrawablesRelative()[2].clearColorFilter();
+                            binding.btnNextTeleop.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.right,0);
                         }
                     });
 
-                    ValueAnimator teleopTextAnim = ValueAnimator.ofArgb(nextButton.getCurrentTextColor(), GenUtils.getAColor(context, R.color.ice));
+                    ValueAnimator teleopTextAnim = ValueAnimator.ofArgb(binding.btnNextTeleop.getCurrentTextColor(), GenUtils.getAColor(context, R.color.ice));
                     teleopTextAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animation) {
-                            nextButton.setTextColor((Integer)animation.getAnimatedValue());
+                            binding.btnNextTeleop.setTextColor((Integer)animation.getAnimatedValue());
                         }
                     });
 
@@ -405,7 +198,7 @@ public class Auton extends Fragment implements UpdateListener {
                     teleopButtonAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animation) {
-                            nextButton.setBackgroundColor((Integer)animation.getAnimatedValue());
+                            binding.btnNextTeleop.setBackgroundColor((Integer)animation.getAnimatedValue());
                         }
                     });
 
@@ -425,72 +218,72 @@ public class Auton extends Fragment implements UpdateListener {
             timer.start();
         }
         else {
-            topEdgeBar.setAlpha(1);
-            bottomEdgeBar.setAlpha(1);
-            rightEdgeBar.setAlpha(1);
-            leftEdgeBar.setAlpha(1);
+            binding.imgTopEdgeBar.setAlpha(1);
+            binding.imgBottomEdgeBar.setAlpha(1);
+            binding.imgRightEdgeBar.setAlpha(1);
+            binding.imgLeftEdgeBar.setAlpha(1);
         }
 
         //set listeners for buttons and fill the hashmap with data
-        pickedUpCoralButton.setOnClickListener(new NumericalDataInputListener(pickedUpCoralCounter, autonHashMap, "CoralPickedUp", true, this));
-        notPickedUpCoralButton.setOnClickListener(new NumericalDataInputListener(pickedUpCoralCounter, autonHashMap, "CoralPickedUp", false, this));
-        pickedUpAlgaeButton.setOnClickListener(new NumericalDataInputListener(pickedUpAlgaeCounter, autonHashMap, "AlgaePickedUp", true, this));
-        notPickedUpAlgaeButton.setOnClickListener(new NumericalDataInputListener(pickedUpAlgaeCounter, autonHashMap, "AlgaePickedUp", false, this));
+        binding.btnCoralPlusPickedUp.setOnClickListener(new NumericalDataInputListener(binding.tvCoralPickedUpCounter, autonHashMap, "CoralPickedUp", true, this));
+        binding.btnCoralMinusPickedUp.setOnClickListener(new NumericalDataInputListener(binding.tvCoralPickedUpCounter, autonHashMap, "CoralPickedUp", false, this));
+        binding.btnAlgaePlusPickedUp.setOnClickListener(new NumericalDataInputListener(binding.tvAlgaePickedUpCounter, autonHashMap, "AlgaePickedUp", true, this));
+        binding.btnAlgaeMinusPickedUp.setOnClickListener(new NumericalDataInputListener(binding.tvAlgaePickedUpCounter, autonHashMap, "AlgaePickedUp", false, this));
 
-        scoredL4Button.setOnClickListener(new NumericalDataInputListener(scoredL4Counter, autonHashMap, "ScoredCoralL4", true, this));
-        notScoredL4Button.setOnClickListener(new NumericalDataInputListener(scoredL4Counter, autonHashMap, "ScoredCoralL4", false, this));
-        scoredL3Button.setOnClickListener(new NumericalDataInputListener(scoredL3Counter, autonHashMap, "ScoredCoralL3", true, this));
-        notScoredL3Button.setOnClickListener(new NumericalDataInputListener(scoredL3Counter, autonHashMap, "ScoredCoralL3", false, this));
-        scoredL2Button.setOnClickListener(new NumericalDataInputListener(scoredL2Counter, autonHashMap, "ScoredCoralL2", true, this));
-        notScoredL2Button.setOnClickListener(new NumericalDataInputListener(scoredL2Counter, autonHashMap, "ScoredCoralL2", false, this));
-        scoredL1Button.setOnClickListener(new NumericalDataInputListener(scoredL1Counter, autonHashMap, "ScoredCoralL1", true, this));
-        notScoredL1Button.setOnClickListener(new NumericalDataInputListener(scoredL1Counter, autonHashMap, "ScoredCoralL1", false, this));
+        binding.btnL4PlusScored.setOnClickListener(new NumericalDataInputListener(binding.tvL4ScoredCounter, autonHashMap, "ScoredCoralL4", true, this));
+        binding.btnL4MinusScored.setOnClickListener(new NumericalDataInputListener(binding.tvL4ScoredCounter, autonHashMap, "ScoredCoralL4", false, this));
+        binding.btnL3PlusScored.setOnClickListener(new NumericalDataInputListener(binding.tvL3ScoredCounter, autonHashMap, "ScoredCoralL3", true, this));
+        binding.btnL3MinusScored.setOnClickListener(new NumericalDataInputListener(binding.tvL3ScoredCounter, autonHashMap, "ScoredCoralL3", false, this));
+        binding.btnL2PlusScored.setOnClickListener(new NumericalDataInputListener(binding.tvL2ScoredCounter, autonHashMap, "ScoredCoralL2", true, this));
+        binding.btnL2MinusScored.setOnClickListener(new NumericalDataInputListener(binding.tvL2ScoredCounter, autonHashMap, "ScoredCoralL2", false, this));
+        binding.btnL1PlusScored.setOnClickListener(new NumericalDataInputListener(binding.tvL1ScoredCounter, autonHashMap, "ScoredCoralL1", true, this));
+        binding.btnL1MinusScored.setOnClickListener(new NumericalDataInputListener(binding.tvL1ScoredCounter, autonHashMap, "ScoredCoralL1", false, this));
 
-        missedL4Button.setOnClickListener(new NumericalDataInputListener(missedL4Counter, autonHashMap, "MissedCoralL4", true, this));
-        notMissedL4Button.setOnClickListener(new NumericalDataInputListener(missedL4Counter, autonHashMap, "MissedCoralL4", false, this));
-        missedL3Button.setOnClickListener(new NumericalDataInputListener(missedL3Counter, autonHashMap, "MissedCoralL3", true, this));
-        notMissedL3Button.setOnClickListener(new NumericalDataInputListener(missedL3Counter, autonHashMap, "MissedCoralL3", false, this));
-        missedL2Button.setOnClickListener(new NumericalDataInputListener(missedL2Counter, autonHashMap, "MissedCoralL2", true, this));
-        notMissedL2Button.setOnClickListener(new NumericalDataInputListener(missedL2Counter, autonHashMap, "MissedCoralL2", false, this));
-        missedL1Button.setOnClickListener(new NumericalDataInputListener(missedL1Counter, autonHashMap, "MissedCoralL1", true, this));
-        notMissedL1Button.setOnClickListener(new NumericalDataInputListener(missedL1Counter, autonHashMap, "MissedCoralL1", false, this));
+        binding.btnL4PlusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvL4MissedCounter, autonHashMap, "MissedCoralL4", true, this));
+        binding.btnL4MinusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvL4MissedCounter, autonHashMap, "MissedCoralL4", false, this));
+        binding.btnL3PlusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvL3MissedCounter, autonHashMap, "MissedCoralL3", true, this));
+        binding.btnL3MinusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvL3MissedCounter, autonHashMap, "MissedCoralL3", false, this));
+        binding.btnL2PlusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvL2MissedCounter, autonHashMap, "MissedCoralL2", true, this));
+        binding.btnL2MinusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvL2MissedCounter, autonHashMap, "MissedCoralL2", false, this));
+        binding.btnL1PlusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvL1MissedCounter, autonHashMap, "MissedCoralL1", true, this));
+        binding.btnL1MinusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvL1MissedCounter, autonHashMap, "MissedCoralL1", false, this));
 
-        removedL3Button.setOnClickListener(new NumericalDataInputListener(removedL3Counter, autonHashMap, "RemovedAlgaeL3", true, this));
-        notRemovedL3Button.setOnClickListener(new NumericalDataInputListener(removedL3Counter, autonHashMap, "RemovedAlgaeL3", false, this));
-        removedL2Button.setOnClickListener(new NumericalDataInputListener(removedL2Counter, autonHashMap, "RemovedAlgaeL2", true, this));
-        notRemovedL2Button.setOnClickListener(new NumericalDataInputListener(removedL2Counter, autonHashMap, "RemovedAlgaeL2", false, this));
+        binding.btnL3PlusRemoved.setOnClickListener(new NumericalDataInputListener(binding.tvL3RemovedCounter, autonHashMap, "RemovedAlgaeL3", true, this));
+        binding.btnL3MinusRemoved.setOnClickListener(new NumericalDataInputListener(binding.tvL3RemovedCounter, autonHashMap, "RemovedAlgaeL3", false, this));
+        binding.btnL2PlusRemoved.setOnClickListener(new NumericalDataInputListener(binding.tvL2RemovedCounter, autonHashMap, "RemovedAlgaeL2", true, this));
+        binding.btnL2MinusRemoved.setOnClickListener(new NumericalDataInputListener(binding.tvL2RemovedCounter, autonHashMap, "RemovedAlgaeL2", false, this));
 
-        attemptedL3Button.setOnClickListener(new NumericalDataInputListener(attemptedL3Counter, autonHashMap, "AttemptedAlgaeL3", true, this));
-        notAttemptedL3Button.setOnClickListener(new NumericalDataInputListener(attemptedL3Counter, autonHashMap, "AttemptedAlgaeL3", false, this));
-        attemptedL2Button.setOnClickListener(new NumericalDataInputListener(attemptedL2Counter, autonHashMap, "AttemptedAlgaeL2", true, this));
-        notAttemptedL2Button.setOnClickListener(new NumericalDataInputListener(attemptedL2Counter, autonHashMap, "AttemptedAlgaeL2", false, this));
+        binding.btnL3PlusAttempted.setOnClickListener(new NumericalDataInputListener(binding.tvL3AttemptedCounter, autonHashMap, "AttemptedAlgaeL3", true, this));
+        binding.btnL3MinusAttempted.setOnClickListener(new NumericalDataInputListener(binding.tvL3AttemptedCounter, autonHashMap, "AttemptedAlgaeL3", false, this));
+        binding.btnL2PlusAttempted.setOnClickListener(new NumericalDataInputListener(binding.tvL2AttemptedCounter, autonHashMap, "AttemptedAlgaeL2", true, this));
+        binding.btnL2MinusAttempted.setOnClickListener(new NumericalDataInputListener(binding.tvL2AttemptedCounter, autonHashMap, "AttemptedAlgaeL2", false, this));
 
-        scoredProcessorButton.setOnClickListener(new NumericalDataInputListener(scoredProcessorCounter, autonHashMap, "ScoredAlgaeProcessor", true, this));
-        notScoredProcessorButton.setOnClickListener(new NumericalDataInputListener(scoredProcessorCounter, autonHashMap, "ScoredAlgaeProcessor", false, this));
-        missedProcessorButton.setOnClickListener(new NumericalDataInputListener(missedProcessorCounter, autonHashMap, "MissedAlgaeProcessor", true, this));
-        notMissedProcessorButton.setOnClickListener(new NumericalDataInputListener(missedProcessorCounter, autonHashMap, "MissedAlgaeProcessor", false, this));
+        binding.btnProcessorPlusScored.setOnClickListener(new NumericalDataInputListener(binding.tvProcessorScoredCounter, autonHashMap, "ScoredAlgaeProcessor", true, this));
+        binding.btnProcessorMinusScored.setOnClickListener(new NumericalDataInputListener(binding.tvProcessorScoredCounter, autonHashMap, "ScoredAlgaeProcessor", false, this));
+        binding.btnProcessorPlusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvProcessorMissedCounter, autonHashMap, "MissedAlgaeProcessor", true, this));
+        binding.btnProcessorMinusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvProcessorMissedCounter, autonHashMap, "MissedAlgaeProcessor", false, this));
 
-        scoredNetButton.setOnClickListener(new NumericalDataInputListener(scoredNetCounter, autonHashMap, "ScoredAlgaeNet", true, this));
-        notScoredNetButton.setOnClickListener(new NumericalDataInputListener(scoredNetCounter, autonHashMap, "ScoredAlgaeNet", false, this));
-        missedNetButton.setOnClickListener(new NumericalDataInputListener(missedNetCounter, autonHashMap, "MissedAlgaeNet", true, this));
-        notMissedNetButton.setOnClickListener(new NumericalDataInputListener(missedNetCounter, autonHashMap, "MissedAlgaeNet", false, this));
+        binding.btnNetPlusScored.setOnClickListener(new NumericalDataInputListener(binding.tvNetScoredCounter, autonHashMap, "ScoredAlgaeNet", true, this));
+        binding.btnNetMinusScored.setOnClickListener(new NumericalDataInputListener(binding.tvNetScoredCounter, autonHashMap, "ScoredAlgaeNet", false, this));
+        binding.btnNetPlusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvNetMissedCounter, autonHashMap, "MissedAlgaeNet", true, this));
+        binding.btnNetMinusMissed.setOnClickListener(new NumericalDataInputListener(binding.tvNetMissedCounter, autonHashMap, "MissedAlgaeNet", false, this));
 
 
-        leaveSwitch.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
+        binding.switchLeave.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 autonHashMap.put("Leave", isChecked ? "Y" : "N");
                 updateXMLObjects();
             }
         });
 
-        fellOverSwitch.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
+        binding.switchFellOver.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setupHashMap.put("FellOver", isChecked ? "Y" : "N");
                 updateXMLObjects();
             }
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        binding.btnNextTeleop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 context.tabs.getTabAt(1).select();
@@ -499,117 +292,117 @@ public class Auton extends Fragment implements UpdateListener {
     }
 
     private void possessionButtonsEnabledState(boolean enable){
-        possessionCoralID.setEnabled(enable);
-        pickedUpCoralID.setEnabled(enable);
-        pickedUpCoralButton.setEnabled(enable);
-        notPickedUpAlgaeButton.setEnabled(enable);
-        pickedUpCoralCounter.setEnabled(enable);
+        binding.tvCoralPossession.setEnabled(enable);
+        binding.tvCoralPickedUp.setEnabled(enable);
+        binding.btnCoralPlusPickedUp.setEnabled(enable);
+        binding.btnAlgaeMinusPickedUp.setEnabled(enable);
+        binding.tvCoralPickedUpCounter.setEnabled(enable);
 
-        possessionAlgaeID.setEnabled(enable);
-        pickedUpAlgaeID.setEnabled(enable);
-        pickedUpAlgaeButton.setEnabled(enable);
-        notPickedUpAlgaeButton.setEnabled(enable);
-        pickedUpAlgaeCounter.setEnabled(enable);
+        binding.tvAlgaePossession.setEnabled(enable);
+        binding.tvAlgaePickedUp.setEnabled(enable);
+        binding.btnAlgaePlusPickedUp.setEnabled(enable);
+        binding.btnAlgaeMinusPickedUp.setEnabled(enable);
+        binding.tvAlgaePickedUpCounter.setEnabled(enable);
     }
 
     private void scoringButtonsEnabledState(boolean enable){
-        coralID.setEnabled(enable);
-        reefID.setEnabled(enable);
-        L4ReefID.setEnabled(enable);
-        L3ReefID.setEnabled(enable);
-        L2ReefID.setEnabled(enable);
-        L1ReefID.setEnabled(enable);
+        binding.tvCoralHeader.setEnabled(enable);
+        binding.tvReef.setEnabled(enable);
+        binding.tvL4Coral.setEnabled(enable);
+        binding.tvL3Coral.setEnabled(enable);
+        binding.tvL2Coral.setEnabled(enable);
+        binding.tvL1Coral.setEnabled(enable);
 
-        scoredL4ID.setEnabled(enable);
-        scoredL4Button.setEnabled(enable);
-        notScoredL4Button.setEnabled(enable);
-        scoredL4Counter.setEnabled(enable);
+        binding.tvL4Scored.setEnabled(enable);
+        binding.btnL4PlusScored.setEnabled(enable);
+        binding.btnL4MinusScored.setEnabled(enable);
+        binding.tvL4ScoredCounter.setEnabled(enable);
 
-        missedL4ID.setEnabled(enable);
-        missedL4Button.setEnabled(enable);
-        notMissedL4Button.setEnabled(enable);
-        missedL4Counter.setEnabled(enable);
+        binding.tvL4Missed.setEnabled(enable);
+        binding.btnL4PlusMissed.setEnabled(enable);
+        binding.btnL4MinusMissed.setEnabled(enable);
+        binding.tvL4MissedCounter.setEnabled(enable);
 
-        scoredL3ID.setEnabled(enable);
-        scoredL3Button.setEnabled(enable);
-        notScoredL3Button.setEnabled(enable);
-        scoredL3Counter.setEnabled(enable);
+        binding.tvL3Scored.setEnabled(enable);
+        binding.btnL3PlusScored.setEnabled(enable);
+        binding.btnL3MinusScored.setEnabled(enable);
+        binding.tvL3ScoredCounter.setEnabled(enable);
 
-        missedL3ID.setEnabled(enable);
-        missedL3Button.setEnabled(enable);
-        notMissedL3Button.setEnabled(enable);
-        missedL3Counter.setEnabled(enable);
+        binding.tvL3Missed.setEnabled(enable);
+        binding.btnL3PlusMissed.setEnabled(enable);
+        binding.btnL3MinusMissed.setEnabled(enable);
+        binding.tvL3MissedCounter.setEnabled(enable);
 
-        scoredL2ID.setEnabled(enable);
-        scoredL2Button.setEnabled(enable);
-        notScoredL2Button.setEnabled(enable);
-        scoredL2Counter.setEnabled(enable);
+        binding.tvL2Scored.setEnabled(enable);
+        binding.btnL2PlusScored.setEnabled(enable);
+        binding.btnL2MinusScored.setEnabled(enable);
+        binding.tvL2ScoredCounter.setEnabled(enable);
 
-        missedL2ID.setEnabled(enable);
-        missedL2Button.setEnabled(enable);
-        notMissedL2Button.setEnabled(enable);
-        missedL2Counter.setEnabled(enable);
+        binding.tvL2Missed.setEnabled(enable);
+        binding.btnL2PlusMissed.setEnabled(enable);
+        binding.btnL2MinusMissed.setEnabled(enable);
+        binding.tvL2MissedCounter.setEnabled(enable);
 
-        scoredL1ID.setEnabled(enable);
-        scoredL1Button.setEnabled(enable);
-        notScoredL1Button.setEnabled(enable);
-        scoredL1Counter.setEnabled(enable);
+        binding.tvL1Scored.setEnabled(enable);
+        binding.btnL1PlusScored.setEnabled(enable);
+        binding.btnL1MinusScored.setEnabled(enable);
+        binding.tvL1ScoredCounter.setEnabled(enable);
 
-        missedL1ID.setEnabled(enable);
-        missedL1Button.setEnabled(enable);
-        notMissedL1Button.setEnabled(enable);
-        missedL1Counter.setEnabled(enable);
+        binding.tvL1Missed.setEnabled(enable);
+        binding.btnL1PlusMissed.setEnabled(enable);
+        binding.btnL1MinusMissed.setEnabled(enable);
+        binding.tvL1MissedCounter.setEnabled(enable);
 
-        algaeID.setEnabled(enable);
-        dealgaefyingID.setEnabled(enable);
-        L3AlgaeID.setEnabled(enable);
-        L2AlgaeID.setEnabled(enable);
+        binding.tvAlgaeHeader.setEnabled(enable);
+        binding.tvDealgaefying.setEnabled(enable);
+        binding.tvL3Algae.setEnabled(enable);
+        binding.tvL2Algae.setEnabled(enable);
 
-        removedL3ID.setEnabled(enable);
-        removedL3Button.setEnabled(enable);
-        notRemovedL3Button.setEnabled(enable);
-        removedL3Counter.setEnabled(enable);
+        binding.tvL3Removed.setEnabled(enable);
+        binding.btnL3PlusRemoved.setEnabled(enable);
+        binding.btnL3MinusRemoved.setEnabled(enable);
+        binding.tvL3RemovedCounter.setEnabled(enable);
 
-        removedL2ID.setEnabled(enable);
-        removedL2Button.setEnabled(enable);
-        notRemovedL2Button.setEnabled(enable);
-        removedL2Counter.setEnabled(enable);
+        binding.tvL2Removed.setEnabled(enable);
+        binding.btnL2PlusRemoved.setEnabled(enable);
+        binding.btnL2MinusRemoved.setEnabled(enable);
+        binding.tvL2RemovedCounter.setEnabled(enable);
 
-        attemptedL3ID.setEnabled(enable);
-        attemptedL3Button.setEnabled(enable);
-        notAttemptedL3Button.setEnabled(enable);
-        attemptedL3Counter.setEnabled(enable);
+        binding.tvL3Attempted.setEnabled(enable);
+        binding.btnL3PlusAttempted.setEnabled(enable);
+        binding.btnL3MinusAttempted.setEnabled(enable);
+        binding.tvL3AttemptedCounter.setEnabled(enable);
 
-        attemptedL2ID.setEnabled(enable);
-        attemptedL2Button.setEnabled(enable);
-        notAttemptedL2Button.setEnabled(enable);
-        attemptedL2Counter.setEnabled(enable);
+        binding.tvL2Attempted.setEnabled(enable);
+        binding.btnL2PlusAttempted.setEnabled(enable);
+        binding.btnL2MinusAttempted.setEnabled(enable);
+        binding.tvL2AttemptedCounter.setEnabled(enable);
 
-        processorID.setEnabled(enable);
-        scoredProcessorID.setEnabled(enable);
-        scoredProcessorButton.setEnabled(enable);
-        notScoredProcessorButton.setEnabled(enable);
-        scoredProcessorCounter.setEnabled(enable);
-        missedProcessorID.setEnabled(enable);
-        missedProcessorButton.setEnabled(enable);
-        notMissedProcessorButton.setEnabled(enable);
-        missedProcessorCounter.setEnabled(enable);
+        binding.tvProcessor.setEnabled(enable);
+        binding.tvProcessorScored.setEnabled(enable);
+        binding.btnProcessorPlusScored.setEnabled(enable);
+        binding.btnProcessorMinusScored.setEnabled(enable);
+        binding.tvProcessorScoredCounter.setEnabled(enable);
+        binding.tvProcessorMissed.setEnabled(enable);
+        binding.btnProcessorPlusMissed.setEnabled(enable);
+        binding.btnProcessorMinusMissed.setEnabled(enable);
+        binding.tvProcessorMissedCounter.setEnabled(enable);
 
-        netID.setEnabled(enable);
-        scoredNetID.setEnabled(enable);
-        scoredNetButton.setEnabled(enable);
-        notScoredNetButton.setEnabled(enable);
-        scoredNetCounter.setEnabled(enable);
-        missedNetID.setEnabled(enable);
-        missedNetButton.setEnabled(enable);
-        missedNetCounter.setEnabled(enable);
+        binding.tvNet.setEnabled(enable);
+        binding.tvNetScored.setEnabled(enable);
+        binding.btnNetPlusScored.setEnabled(enable);
+        binding.btnNetMinusScored.setEnabled(enable);
+        binding.tvNetScoredCounter.setEnabled(enable);
+        binding.tvNetMissed.setEnabled(enable);
+        binding.btnNetPlusMissed.setEnabled(enable);
+        binding.tvNetMissedCounter.setEnabled(enable);
 }
 
 private void miscButtonsEnabledState(boolean enable){
-        miscInstructionsID.setEnabled(enable);
-        leaveSwitch.setEnabled(enable);
-        leaveID.setEnabled(enable);
-        nextButton.setEnabled(enable);
+        binding.tvMiscDirections.setEnabled(enable);
+        binding.switchLeave.setEnabled(enable);
+        binding.tvLeave.setEnabled(enable);
+        binding.btnNextTeleop.setEnabled(enable);
     }
 
     private void allButtonsEnabledState(boolean enable){
@@ -619,67 +412,67 @@ private void miscButtonsEnabledState(boolean enable){
     }
 
     public void updateXMLObjects(){
-        scoredL4Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredCoralL4"), 3));
-        scoredL3Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredCoralL3"), 3));
-        scoredL2Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredCoralL2"), 3));
-        scoredL1Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredCoralL1"), 3));
+        binding.tvL4ScoredCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredCoralL4"), 3));
+        binding.tvL3ScoredCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredCoralL3"), 3));
+        binding.tvL2ScoredCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredCoralL2"), 3));
+        binding.tvL1ScoredCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredCoralL1"), 3));
 
-        missedL4Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedCoralL4"), 3));
-        missedL3Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedCoralL3"), 3));
-        missedL2Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedCoralL2"), 3));
-        missedL1Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedCoralL1"), 3));
+        binding.tvL4MissedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedCoralL4"), 3));
+        binding.tvL3MissedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedCoralL3"), 3));
+        binding.tvL2MissedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedCoralL2"), 3));
+        binding.tvL1MissedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedCoralL1"), 3));
 
-        removedL3Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("RemovedAlgaeL3"), 3));
-        removedL2Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("RemovedAlgaeL2"), 3));
-        attemptedL3Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("AttemptedAlgaeL3"), 3));
-        attemptedL2Counter.setText(GenUtils.padLeftZeros(autonHashMap.get("AttemptedAlgaeL2"), 3));
+        binding.tvL3RemovedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("RemovedAlgaeL3"), 3));
+        binding.tvL2RemovedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("RemovedAlgaeL2"), 3));
+        binding.tvL3AttemptedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("AttemptedAlgaeL3"), 3));
+        binding.tvL2AttemptedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("AttemptedAlgaeL2"), 3));
 
-        scoredProcessorCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredAlgaeProcessor"), 3));
-        missedProcessorCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedAlgaeProcessor"), 3));
-        scoredNetCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredAlgaeNet"), 3));
-        missedNetCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedAlgaeNet"), 3));
+        binding.tvProcessorScoredCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredAlgaeProcessor"), 3));
+        binding.tvProcessorMissedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedAlgaeProcessor"), 3));
+        binding.tvNetScoredCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("ScoredAlgaeNet"), 3));
+        binding.tvNetMissedCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("MissedAlgaeNet"), 3));
 
-        pickedUpCoralCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("CoralPickedUp"), 3));
-        pickedUpAlgaeCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("AlgaePickedUp"), 3));
+        binding.tvCoralPickedUpCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("CoralPickedUp"), 3));
+        binding.tvAlgaePickedUpCounter.setText(GenUtils.padLeftZeros(autonHashMap.get("AlgaePickedUp"), 3));
 
-        leaveSwitch.setChecked(autonHashMap.get("Leave").equals("Y"));
+        binding.switchLeave.setChecked(autonHashMap.get("Leave").equals("Y"));
 
         if(setupHashMap.get("FellOver").equals("Y")) {
-            fellOverSwitch.setChecked(true);
-            nextButton.setPadding(150, 0, 150, 0);
-            nextButton.setText(R.string.GenerateQRCode);
+            binding.switchFellOver.setChecked(true);
+            binding.btnNextTeleop.setPadding(150, 0, 150, 0);
+            binding.btnNextTeleop.setText(R.string.GenerateQRCode);
             allButtonsEnabledState(false);
         } else {
-            fellOverSwitch.setChecked(false);
-            nextButton.setPadding(150, 0, 185, 0);
-            nextButton.setText(R.string.TeleopNext);
+            binding.switchFellOver.setChecked(false);
+            binding.btnNextTeleop.setPadding(150, 0, 185, 0);
+            binding.btnNextTeleop.setText(R.string.TeleopNext);
             allButtonsEnabledState(true);
             // Disables decrement buttons if counter is at 0
             // There's totally a better way to do this without the redundancy
-            notPickedUpCoralButton.setEnabled(Integer.parseInt(pickedUpCoralCounter.getText().toString()) > 0);
-            notPickedUpAlgaeButton.setEnabled(Integer.parseInt(pickedUpAlgaeCounter.getText().toString()) > 0);
-            notPickedUpCoralButton.setEnabled(Integer.parseInt(pickedUpCoralCounter.getText().toString()) > 0);
-            notPickedUpAlgaeButton.setEnabled(Integer.parseInt(pickedUpAlgaeCounter.getText().toString()) > 0);
-            notScoredL4Button.setEnabled(Integer.parseInt(scoredL4Counter.getText().toString()) > 0);
-            notScoredL3Button.setEnabled(Integer.parseInt(scoredL3Counter.getText().toString()) > 0);
-            notScoredL2Button.setEnabled(Integer.parseInt(scoredL2Counter.getText().toString()) > 0);
-            notScoredL1Button.setEnabled(Integer.parseInt(scoredL1Counter.getText().toString()) > 0);
+            binding.btnCoralMinusPickedUp.setEnabled(Integer.parseInt(binding.tvCoralPickedUpCounter.getText().toString()) > 0);
+            binding.btnAlgaeMinusPickedUp.setEnabled(Integer.parseInt(binding.tvAlgaePickedUpCounter.getText().toString()) > 0);
+            binding.btnCoralMinusPickedUp.setEnabled(Integer.parseInt(binding.tvCoralPickedUpCounter.getText().toString()) > 0);
+            binding.btnAlgaeMinusPickedUp.setEnabled(Integer.parseInt(binding.tvAlgaePickedUpCounter.getText().toString()) > 0);
+            binding.btnL4MinusScored.setEnabled(Integer.parseInt(binding.tvL4ScoredCounter.getText().toString()) > 0);
+            binding.btnL3MinusScored.setEnabled(Integer.parseInt(binding.tvL3ScoredCounter.getText().toString()) > 0);
+            binding.btnL2MinusScored.setEnabled(Integer.parseInt(binding.tvL2ScoredCounter.getText().toString()) > 0);
+            binding.btnL1MinusScored.setEnabled(Integer.parseInt(binding.tvL1ScoredCounter.getText().toString()) > 0);
 
-            notMissedL4Button.setEnabled(Integer.parseInt(missedL4Counter.getText().toString()) > 0);
-            notMissedL3Button.setEnabled(Integer.parseInt(missedL3Counter.getText().toString()) > 0);
-            notMissedL2Button.setEnabled(Integer.parseInt(missedL2Counter.getText().toString()) > 0);
-            notMissedL1Button.setEnabled(Integer.parseInt(missedL1Counter.getText().toString()) > 0);
+            binding.btnL4MinusMissed.setEnabled(Integer.parseInt(binding.tvL4MissedCounter.getText().toString()) > 0);
+            binding.btnL3MinusMissed.setEnabled(Integer.parseInt(binding.tvL3MissedCounter.getText().toString()) > 0);
+            binding.btnL2MinusMissed.setEnabled(Integer.parseInt(binding.tvL2MissedCounter.getText().toString()) > 0);
+            binding.btnL1MinusMissed.setEnabled(Integer.parseInt(binding.tvL1MissedCounter.getText().toString()) > 0);
 
-            notRemovedL3Button.setEnabled(Integer.parseInt(removedL3Counter.getText().toString()) > 0);
-            notRemovedL2Button.setEnabled(Integer.parseInt(removedL2Counter.getText().toString()) > 0);
-            notAttemptedL3Button.setEnabled(Integer.parseInt(attemptedL3Counter.getText().toString()) > 0);
-            notAttemptedL2Button.setEnabled(Integer.parseInt(attemptedL2Counter.getText().toString()) > 0);
+            binding.btnL3MinusRemoved.setEnabled(Integer.parseInt(binding.tvL3RemovedCounter.getText().toString()) > 0);
+            binding.btnL2MinusRemoved.setEnabled(Integer.parseInt(binding.tvL2RemovedCounter.getText().toString()) > 0);
+            binding.btnL3MinusAttempted.setEnabled(Integer.parseInt(binding.tvL3AttemptedCounter.getText().toString()) > 0);
+            binding.btnL2MinusAttempted.setEnabled(Integer.parseInt(binding.tvL2AttemptedCounter.getText().toString()) > 0);
 
-            notScoredProcessorButton.setEnabled(Integer.parseInt(scoredProcessorCounter.getText().toString()) > 0);
-            notMissedProcessorButton.setEnabled(Integer.parseInt(missedProcessorCounter.getText().toString()) > 0);
+            binding.btnProcessorMinusScored.setEnabled(Integer.parseInt(binding.tvProcessorScoredCounter.getText().toString()) > 0);
+            binding.btnProcessorMinusMissed.setEnabled(Integer.parseInt(binding.tvProcessorMissedCounter.getText().toString()) > 0);
 
-            notScoredNetButton.setEnabled(Integer.parseInt(scoredNetCounter.getText().toString()) > 0);
-            notMissedNetButton.setEnabled(Integer.parseInt(missedNetCounter.getText().toString()) > 0);
+            binding.btnNetMinusScored.setEnabled(Integer.parseInt(binding.tvNetScoredCounter.getText().toString()) > 0);
+            binding.btnNetMinusMissed.setEnabled(Integer.parseInt(binding.tvNetMissedCounter.getText().toString()) > 0);
         }
     }
 
@@ -698,8 +491,8 @@ private void miscButtonsEnabledState(boolean enable){
             } else {
                 if(teleopButtonAnimation != null) {
                     teleopButtonAnimation.cancel();
-                    nextButton.setBackground(getResources().getDrawable(R.drawable.button_next_states));
-                    nextButton.setTextColor(new ColorStateList(
+                    binding.btnNextTeleop.setBackground(getResources().getDrawable(R.drawable.button_next_states));
+                    binding.btnNextTeleop.setTextColor(new ColorStateList(
                             new int [] [] {
                                     new int [] {android.R.attr.state_enabled},
                                     new int [] {}
@@ -709,13 +502,25 @@ private void miscButtonsEnabledState(boolean enable){
                                     GenUtils.getAColor(context, R.color.ocean)
                             }
                     ));
-                    nextButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.right_states,0);
-                    nextButton.setSelected(true);
+                    binding.btnNextTeleop.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.right_states,0);
+                    binding.btnNextTeleop.setSelected(true);
                 }
                 HashMapManager.putSetupHashMap(setupHashMap);
                 HashMapManager.putAutonHashMap(autonHashMap);
             }
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        /*
+         * A fragment instance can outlive its View, so if we don't set
+         * it to null, the binding variable will hold a reference to a destroyed
+         * fragment instance even after the view is destroyed which causes a memory leak
+        */
+        binding = null;
     }
 
     @Override
